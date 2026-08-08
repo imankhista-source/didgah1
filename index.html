@@ -26,54 +26,100 @@
       background: white;
     }
 
-    /* Header */
     header {
-      padding: 22px 20px;
-      background: #ffffff;
+      padding: 25px 20px;
+      text-align: center;
+      background: white;
       border-bottom: 1px solid #eeeeee;
     }
 
     .logo {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
-      color: #222;
     }
 
     .subtitle {
-      margin-top: 6px;
+      margin-top: 8px;
       color: #777;
       font-size: 14px;
     }
 
-    /* Main */
     main {
-      padding: 20px;
-      padding-bottom: 90px;
+      padding: 22px 18px 35px;
     }
 
-    .section-title {
+    .title {
       font-size: 20px;
       font-weight: bold;
-      margin-bottom: 15px;
+      text-align: center;
+      margin-bottom: 22px;
     }
 
-    /* Poll Card */
+    .categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid #e2e5ea;
+      border-radius: 18px;
+      padding: 24px 10px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+
+    .category:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(0,0,0,0.09);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .category-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .category-description {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #777;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .back-button {
+      border: none;
+      background: #f0f2f5;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
     .poll-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
+      border: 1px solid #e2e5ea;
       border-radius: 16px;
       padding: 18px;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
     }
 
-    .poll-category {
-      font-size: 12px;
-      color: #777;
-      margin-bottom: 8px;
-    }
-
-    .poll-question {
+    .poll-title {
       font-size: 17px;
       font-weight: bold;
       line-height: 1.7;
@@ -86,7 +132,6 @@
       padding: 12px;
       margin-top: 9px;
       cursor: pointer;
-      transition: 0.2s;
     }
 
     .option:hover {
@@ -106,44 +151,22 @@
       cursor: pointer;
     }
 
-    /* Bottom Navigation */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 480px;
-      height: 70px;
-      background: white;
-      border-top: 1px solid #ddd;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-    }
-
-    .nav-item {
+    .empty-message {
       text-align: center;
-      font-size: 12px;
       color: #777;
+      padding: 35px 10px;
+      line-height: 1.8;
     }
 
-    .nav-icon {
-      font-size: 22px;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .active {
-      color: #4f6df5;
-      font-weight: bold;
-    }
   </style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
+
+  <!-- صفحه اصلی -->
+  <div id="homePage" class="page active">
 
     <header>
       <div class="logo">دیدگاه</div>
@@ -152,96 +175,133 @@
 
     <main>
 
-      <div class="section-title">
-        نظرسنجی‌های فعال
+      <div class="title">
+        موضوع مورد نظر خود را انتخاب کنید
       </div>
 
-      <!-- Poll 1 -->
-      <div class="poll-card">
+      <div class="categories">
 
-        <div class="poll-category">
-          فرهنگ
+        <div class="category" onclick="openCategory('هنری')">
+          <div class="icon">🎨</div>
+          <div class="category-name">هنری</div>
+          <div class="category-description">سینما، موسیقی، نقاشی و هنر</div>
         </div>
 
-        <div class="poll-question">
-          به نظر شما کدام موضوع فرهنگی اهمیت بیشتری دارد؟
+        <div class="category" onclick="openCategory('ورزشی')">
+          <div class="icon">⚽</div>
+          <div class="category-name">ورزشی</div>
+          <div class="category-description">ورزش و مسابقات</div>
         </div>
 
-        <div class="option">
-          کتاب و مطالعه
+        <div class="category" onclick="openCategory('علمی')">
+          <div class="icon">🔬</div>
+          <div class="category-name">علمی</div>
+          <div class="category-description">علم، فناوری و دانش</div>
         </div>
 
-        <div class="option">
-          سینما و فیلم
+        <div class="category" onclick="openCategory('فرهنگی')">
+          <div class="icon">📚</div>
+          <div class="category-name">فرهنگی</div>
+          <div class="category-description">کتاب، زبان و فرهنگ</div>
         </div>
 
-        <div class="option">
-          موسیقی
+        <div class="category" onclick="openCategory('اقتصادی')">
+          <div class="icon">💰</div>
+          <div class="category-name">اقتصادی</div>
+          <div class="category-description">اقتصاد و کسب‌وکار</div>
         </div>
 
-        <button class="vote-button">
-          ثبت رأی
-        </button>
-
-      </div>
-
-      <!-- Poll 2 -->
-      <div class="poll-card">
-
-        <div class="poll-category">
-          ورزش
+        <div class="category" onclick="openCategory('طبیعت')">
+          <div class="icon">🌱</div>
+          <div class="category-name">طبیعت</div>
+          <div class="category-description">محیط زیست و طبیعت</div>
         </div>
 
-        <div class="poll-question">
-          کدام ورزش را بیشتر دنبال می‌کنید؟
+        <div class="category" onclick="openCategory('اجتماعی')">
+          <div class="icon">🏛️</div>
+          <div class="category-name">اجتماعی</div>
+          <div class="category-description">جامعه و زندگی</div>
         </div>
 
-        <div class="option">
-          فوتبال
+        <div class="category" onclick="openCategory('استانداردها')">
+          <div class="icon">🗣️</div>
+          <div class="category-name">استانداردها</div>
+          <div class="category-description">پیشنهاد و انتخاب واژه‌ها</div>
         </div>
-
-        <div class="option">
-          والیبال
-        </div>
-
-        <div class="option">
-          بسکتبال
-        </div>
-
-        <button class="vote-button">
-          ثبت رأی
-        </button>
 
       </div>
 
     </main>
 
-    <!-- Bottom Navigation -->
-    <div class="bottom-nav">
+  </div>
 
-      <div class="nav-item active">
-        <span class="nav-icon">🏠</span>
-        خانه
+
+  <!-- صفحه دسته‌بندی -->
+
+  <div id="categoryPage" class="page">
+
+    <header>
+      <div class="logo">دیدگاه</div>
+      <div class="subtitle" id="categoryTitle"></div>
+    </header>
+
+    <main>
+
+      <button class="back-button" onclick="goHome()">
+        ← بازگشت به دسته‌بندی‌ها
+      </button>
+
+      <div id="pollList">
+
       </div>
 
-      <div class="nav-item">
-        <span class="nav-icon">📊</span>
-        نتایج
-      </div>
-
-      <div class="nav-item">
-        <span class="nav-icon">➕</span>
-        پیشنهاد
-      </div>
-
-      <div class="nav-item">
-        <span class="nav-icon">👤</span>
-        حساب من
-      </div>
-
-    </div>
+    </main>
 
   </div>
+
+</div>
+
+
+<script>
+
+  function openCategory(category) {
+
+    document.getElementById("homePage").classList.remove("active");
+
+    document.getElementById("categoryPage").classList.add("active");
+
+    document.getElementById("categoryTitle").innerText =
+      "نظرسنجی‌های " + category;
+
+    let pollList = document.getElementById("pollList");
+
+    pollList.innerHTML = `
+      
+      <div class="poll-card">
+
+        <div class="poll-title">
+          هنوز نظرسنجی‌ای در بخش ${category} ایجاد نشده است.
+        </div>
+
+        <div class="empty-message">
+          به‌زودی نظرسنجی‌های این بخش در اینجا نمایش داده می‌شوند.
+        </div>
+
+      </div>
+
+    `;
+  }
+
+
+  function goHome() {
+
+    document.getElementById("categoryPage").classList.remove("active");
+
+    document.getElementById("homePage").classList.add("active");
+
+  }
+
+</script>
 
 </body>
 </html>
