@@ -1600,9 +1600,20 @@ document
 .getElementById("pollPage")
 .classList.remove("active");
 
+
+if(pollOpenedFrom==="home"){
+
+document
+.getElementById("homePage")
+.classList.add("active");
+
+}else{
+
 document
 .getElementById("categoryPage")
 .classList.add("active");
+
+}
 
 }
 
