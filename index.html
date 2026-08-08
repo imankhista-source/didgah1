@@ -3,30 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>دیدگاه</title>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f6f8;
+      background: #f5f7fa;
       color: #222;
     }
 
+    .app {
+      max-width: 480px;
+      margin: auto;
+      min-height: 100vh;
+      background: white;
+    }
+
+    /* Header */
     header {
+      padding: 22px 20px;
       background: #ffffff;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid #eeeeee;
     }
 
     .logo {
       font-size: 28px;
       font-weight: bold;
+      color: #222;
     }
 
     .subtitle {
@@ -35,79 +45,203 @@
       font-size: 14px;
     }
 
+    /* Main */
     main {
       padding: 20px;
-      max-width: 600px;
-      margin: auto;
+      padding-bottom: 90px;
     }
 
-    .welcome {
-      background: white;
-      border-radius: 18px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
     }
 
-    .welcome h1 {
-      margin-top: 0;
-      font-size: 25px;
+    /* Poll Card */
+    .poll-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    .welcome p {
-      color: #666;
-      line-height: 1.8;
-    }
-
-    .start-button {
-      border: none;
-      border-radius: 12px;
-      padding: 14px 28px;
-      font-size: 16px;
-      background: #222;
-      color: white;
-      cursor: pointer;
-      margin-top: 12px;
-    }
-
-    .start-button:active {
-      transform: scale(0.97);
-    }
-
-    footer {
-      text-align: center;
-      color: #999;
+    .poll-category {
       font-size: 12px;
-      padding: 30px 10px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .poll-question {
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+
+    .option {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 9px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      background: #f1f5ff;
+      border-color: #4f6df5;
+    }
+
+    .vote-button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      margin-top: 14px;
+      background: #4f6df5;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      height: 70px;
+      background: white;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+    }
+
+    .nav-icon {
+      font-size: 22px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .active {
+      color: #4f6df5;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">دیدگاه</div>
-    <div class="subtitle">صدای شما، بخشی از تصویر جامعه</div>
-  </header>
+  <div class="app">
 
-  <main>
-    <section class="welcome">
-      <h1>به دیدگاه خوش آمدید</h1>
+    <header>
+      <div class="logo">دیدگاه</div>
+      <div class="subtitle">صدای شما، تصویر جامعه</div>
+    </header>
 
-      <p>
-        اینجا می‌توانید در نظرسنجی‌های مختلف شرکت کنید،
-        نظر خود را ثبت کنید و نتایج دیدگاه مردم را ببینید.
-      </p>
+    <main>
 
-      <button class="start-button">
-        مشاهده نظرسنجی‌ها
-      </button>
-    </section>
-  </main>
+      <div class="section-title">
+        نظرسنجی‌های فعال
+      </div>
 
-  <footer>
-    نسخه اولیه پروژه دیدگاه
-  </footer>
+      <!-- Poll 1 -->
+      <div class="poll-card">
+
+        <div class="poll-category">
+          فرهنگ
+        </div>
+
+        <div class="poll-question">
+          به نظر شما کدام موضوع فرهنگی اهمیت بیشتری دارد؟
+        </div>
+
+        <div class="option">
+          کتاب و مطالعه
+        </div>
+
+        <div class="option">
+          سینما و فیلم
+        </div>
+
+        <div class="option">
+          موسیقی
+        </div>
+
+        <button class="vote-button">
+          ثبت رأی
+        </button>
+
+      </div>
+
+      <!-- Poll 2 -->
+      <div class="poll-card">
+
+        <div class="poll-category">
+          ورزش
+        </div>
+
+        <div class="poll-question">
+          کدام ورزش را بیشتر دنبال می‌کنید؟
+        </div>
+
+        <div class="option">
+          فوتبال
+        </div>
+
+        <div class="option">
+          والیبال
+        </div>
+
+        <div class="option">
+          بسکتبال
+        </div>
+
+        <button class="vote-button">
+          ثبت رأی
+        </button>
+
+      </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+
+      <div class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        خانه
+      </div>
+
+      <div class="nav-item">
+        <span class="nav-icon">📊</span>
+        نتایج
+      </div>
+
+      <div class="nav-item">
+        <span class="nav-icon">➕</span>
+        پیشنهاد
+      </div>
+
+      <div class="nav-item">
+        <span class="nav-icon">👤</span>
+        حساب من
+      </div>
+
+    </div>
+
+  </div>
 
 </body>
 </html>
