@@ -1159,7 +1159,140 @@ votes:[55,25,15,5]
 let currentCategory="";
 
 let currentPoll=null;
+/* OPEN POLL FROM HOME */
 
+function openPollFromHome(category,index){
+
+currentCategory=category;
+
+currentPoll=
+polls[category][index];
+
+document
+.getElementById("homePage")
+.classList.remove("active");
+
+document
+.getElementById("pollPage")
+.classList.add("active");
+
+const detail=
+document.getElementById("pollDetail");
+
+let optionsHTML="";
+
+currentPoll.options.forEach(option=>{
+
+optionsHTML+=`
+
+<div
+class="option"
+onclick="selectOption(this)">
+
+${option}
+
+</div>
+
+`;
+
+});
+
+
+let resultsHTML="";
+
+currentPoll.options.forEach((option,i)=>{
+
+resultsHTML+=`
+
+<div class="result-row">
+
+<div class="result-label">
+
+<span>
+${option}
+</span>
+
+<span>
+${currentPoll.votes[i]}%
+</span>
+
+</div>
+
+<div class="result-bar">
+
+<div
+class="result-fill"
+style="width:${currentPoll.votes[i]}%">
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+detail.innerHTML=`
+
+<div class="detail-image">
+${currentPoll.emoji}
+</div>
+
+<div class="detail-category">
+دسته‌بندی: ${currentCategory}
+</div>
+
+<div class="detail-title">
+${currentPoll.title}
+</div>
+
+<div class="detail-description">
+${currentPoll.description}
+</div>
+
+<div class="detail-info">
+
+<span>
+⏳ ${currentPoll.info}
+</span>
+
+<span>
+👥 ${currentPoll.voters} نفر
+</span>
+
+</div>
+
+<div class="options">
+${optionsHTML}
+</div>
+
+<button
+class="vote-button"
+onclick="showResult(this)">
+
+ثبت رأی
+
+</button>
+
+<div class="results">
+
+<div class="results-title">
+📊 نتایج نظرسنجی
+</div>
+
+${resultsHTML}
+
+<div class="result-message">
+نتایج فعلی نظرسنجی
+</div>
+
+</div>
+
+`;
+
+}
 
 /* OPEN CATEGORY */
 
