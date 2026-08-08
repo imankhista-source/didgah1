@@ -47,8 +47,6 @@ direction:ltr;
 overflow:hidden;
 }
 
-/* سازگاری با مرورگرهای قدیمی‌تر */
-
 @supports not (height:100dvh){
 
 .app{
@@ -57,6 +55,7 @@ min-height:100vh;
 }
 
 }
+
 
 /* متن فارسی */
 
@@ -268,31 +267,18 @@ display:flex;
 align-items:center;
 justify-content:flex-start;
 gap:8px;
-
 border:none;
-
 background:#eef2ff;
-
 color:#4f6df5;
-
 padding:10px 16px;
-
 border-radius:12px;
-
 font-size:14px;
-
 font-weight:bold;
-
 cursor:pointer;
-
 margin-bottom:18px;
-
 box-shadow:0 3px 8px rgba(0,0,0,.06);
-
 transition:.2s;
-
 direction:ltr;
-
 flex-shrink:0;
 }
 
@@ -449,9 +435,6 @@ background:#eef2ff;
 font-weight:bold;
 }
 
-
-/* بعد از ثبت رأی */
-
 .option.locked{
 cursor:default;
 }
@@ -537,6 +520,7 @@ height:100%;
 background:#4f6df5;
 border-radius:0 10px 10px 0;
 transform-origin:left center;
+transition:width .4s ease;
 }
 
 .result-message{
@@ -1049,304 +1033,239 @@ onclick="goCategory()">
 
 const polls={
 
-
 "هنری":[
 
 {
-
 emoji:"🎬",
-
-title:
-"کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
-
-description:
-"به نظر شما کدام حوزه هنری می‌تواند تأثیر بیشتری بر فرهنگ و جامعه داشته باشد؟ دیدگاه خود را با انتخاب یکی از گزینه‌ها ثبت کنید.",
-
+title:"کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
+description:"به نظر شما کدام حوزه هنری می‌تواند تأثیر بیشتری بر فرهنگ و جامعه داشته باشد؟ دیدگاه خود را با انتخاب یکی از گزینه‌ها ثبت کنید.",
 info:"۶ روز باقی مانده",
-
 voters:"۱٬۲۵۰",
-
 options:[
 "سینما",
 "موسیقی",
 "نقاشی",
 "تئاتر"
 ],
-
 votes:[42,31,17,10]
-
 },
 
-
 {
-
 emoji:"🎥",
-
-title:
-"کدام ژانر فیلم را بیشتر می‌پسندید؟",
-
-description:
-"اگر قرار باشد فقط یک ژانر فیلم را برای تماشا انتخاب کنید، کدام گزینه انتخاب شماست؟",
-
+title:"کدام ژانر فیلم را بیشتر می‌پسندید؟",
+description:"اگر قرار باشد فقط یک ژانر فیلم را برای تماشا انتخاب کنید، کدام گزینه انتخاب شماست؟",
 info:"۴ روز باقی مانده",
-
 voters:"۹۸۰",
-
 options:[
 "درام",
 "کمدی",
 "اکشن",
 "تاریخی"
 ],
-
 votes:[35,29,23,13]
-
 },
 
-
 {
-
 emoji:"🎵",
-
-title:
-"موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
-
-description:
-"به نظر شما موسیقی سنتی ایران در میان نسل جدید چه جایگاهی دارد؟",
-
+title:"موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
+description:"به نظر شما موسیقی سنتی ایران در میان نسل جدید چه جایگاهی دارد؟",
 info:"۸ روز باقی مانده",
-
 voters:"۷۶۰",
-
 options:[
 "بسیار محبوب",
 "نسبتاً محبوب",
 "کمتر محبوب",
 "تقریباً فراموش شده"
 ],
-
 votes:[28,37,25,10]
-
 }
 
 ],
 
-
 "ورزشی":[
 
 {
-
 emoji:"⚽",
-
-title:
-"کدام ورزش را بیشتر دنبال می‌کنید؟",
-
-description:
-"ورزش مورد علاقه خود را انتخاب کنید.",
-
+title:"کدام ورزش را بیشتر دنبال می‌کنید؟",
+description:"ورزش مورد علاقه خود را انتخاب کنید.",
 info:"۵ روز باقی مانده",
-
 voters:"۱٬۴۵۰",
-
 options:[
 "فوتبال",
 "والیبال",
 "بسکتبال",
 "کشتی"
 ],
-
 votes:[50,20,15,15]
-
 }
 
 ],
 
-
 "علمی":[
 
 {
-
 emoji:"🔬",
-
-title:
-"کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
-
-description:
-"به نظر شما کدام حوزه علمی بیشترین تأثیر را بر آینده خواهد داشت؟",
-
+title:"کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
+description:"به نظر شما کدام حوزه علمی بیشترین تأثیر را بر آینده خواهد داشت؟",
 info:"۷ روز باقی مانده",
-
 voters:"۱٬۱۰۰",
-
 options:[
 "هوش مصنوعی",
 "پزشکی",
 "فضا",
 "انرژی"
 ],
-
 votes:[38,27,15,20]
-
 }
 
 ],
 
-
 "فرهنگی":[
 
 {
-
 emoji:"📚",
-
-title:
-"مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
-
-description:
-"دیدگاه شما درباره وضعیت مطالعه در جامعه امروز چیست؟",
-
+title:"مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
+description:"دیدگاه شما درباره وضعیت مطالعه در جامعه امروز چیست؟",
 info:"۶ روز باقی مانده",
-
 voters:"۸۳۰",
-
 options:[
 "بسیار خوب",
 "خوب",
 "متوسط",
 "ضعیف"
 ],
-
 votes:[15,30,35,20]
-
 }
 
 ],
 
-
 "اقتصادی":[
 
 {
-
 emoji:"💰",
-
-title:
-"مهم‌ترین عامل رشد یک اقتصاد چیست؟",
-
-description:
-"کدام عامل را برای رشد اقتصادی مهم‌تر می‌دانید؟",
-
+title:"مهم‌ترین عامل رشد یک اقتصاد چیست؟",
+description:"کدام عامل را برای رشد اقتصادی مهم‌تر می‌دانید؟",
 info:"۵ روز باقی مانده",
-
 voters:"۹۲۰",
-
 options:[
 "تولید",
 "سرمایه‌گذاری",
 "فناوری",
 "صادرات"
 ],
-
 votes:[32,25,28,15]
-
 }
 
 ],
 
-
 "طبیعت":[
 
 {
-
 emoji:"🌱",
-
-title:
-"مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
-
-description:
-"کدام اقدام باید برای حفاظت از محیط زیست در اولویت باشد؟",
-
+title:"مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
+description:"کدام اقدام باید برای حفاظت از محیط زیست در اولویت باشد؟",
 info:"۹ روز باقی مانده",
-
 voters:"۷۱۰",
-
 options:[
 "کاهش مصرف",
 "بازیافت",
 "انرژی پاک",
 "حفاظت از جنگل‌ها"
 ],
-
 votes:[20,22,38,20]
-
 }
 
 ],
 
-
 "اجتماعی":[
 
 {
-
 emoji:"🏛️",
-
-title:
-"مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
-
-description:
-"از دیدگاه شما کدام عامل بیشترین تأثیر را بر کیفیت زندگی دارد؟",
-
+title:"مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
+description:"از دیدگاه شما کدام عامل بیشترین تأثیر را بر کیفیت زندگی دارد؟",
 info:"۷ روز باقی مانده",
-
 voters:"۸۹۰",
-
 options:[
 "آموزش",
 "اقتصاد",
 "سلامت",
 "امنیت"
 ],
-
 votes:[25,30,25,20]
-
 }
 
 ],
 
-
 "استانداردها":[
 
 {
-
 emoji:"🗣️",
-
-title:
-"برای مفهوم Smartphone کدام واژه فارسی مناسب‌تر است؟",
-
-description:
-"کدام واژه را برای استفاده عمومی مناسب‌تر می‌دانید؟",
-
+title:"برای مفهوم Smartphone کدام واژه فارسی مناسب‌تر است؟",
+description:"کدام واژه را برای استفاده عمومی مناسب‌تر می‌دانید؟",
 info:"۱۰ روز باقی مانده",
-
 voters:"۶۴۰",
-
 options:[
 "گوشی هوشمند",
 "تلفن هوشمند",
 "همراه هوشمند",
 "پیشنهاد دیگر"
 ],
-
 votes:[55,25,15,5]
-
 }
 
-]};
+]
+
+};
 
 
 /* CURRENT STATE */
 
 let currentCategory="";
-
 let currentPoll=null;
+let pollOpenedFrom="category";
+
+
+/* GET POLL KEY */
+
+function getPollKey(){
+
+return "didgah_poll_" +
+currentCategory +
+"_" +
+currentPoll.title;
+
+}
+
+
+/* LOAD SAVED RESULTS */
+
+function loadSavedResults(){
+
+const savedResults =
+localStorage.getItem(
+getPollKey() + "_results"
+);
+
+if(savedResults){
+
+try{
+
+currentPoll.votes =
+JSON.parse(savedResults);
+
+}catch(error){
+
+console.log(
+"خطا در خواندن نتایج ذخیره‌شده"
+);
+
+}
+
+}
+
+}
+
+
 /* CHECK SAVED VOTE */
 
 function checkSavedVote(){
@@ -1361,7 +1280,9 @@ const options =
 pollDetail.querySelectorAll(".option");
 
 if(!currentPoll || !voteButton){
+
 return;
+
 }
 
 const pollKey =
@@ -1378,9 +1299,10 @@ if(savedVote !== null){
 options.forEach((option,index)=>{
 
 option.style.pointerEvents="none";
+
 option.classList.add("locked");
 
-if(index == Number(savedVote)){
+if(index === Number(savedVote)){
 
 option.classList.add("selected");
 
@@ -1388,10 +1310,12 @@ option.classList.add("selected");
 
 });
 
+
 voteButton.innerText =
 "رأی ثبت شد ✓";
 
 voteButton.disabled=true;
+
 
 const results =
 pollDetail.querySelector(".results");
@@ -1405,32 +1329,17 @@ results.style.display="block";
 }
 
 }
-let pollOpenedFrom="category";
 
 
-/* OPEN POLL FROM HOME */
+/* CREATE POLL HTML */
 
-function openPollFromHome(category,index){
+function renderPoll(){
 
-pollOpenedFrom="home";
-
-currentCategory=category;
-
-currentPoll=
-polls[category][index];
-
-document
-.getElementById("homePage")
-.classList.remove("active");
-
-document
-.getElementById("pollPage")
-.classList.add("active");
-
-const detail=
+const detail =
 document.getElementById("pollDetail");
 
 let optionsHTML="";
+
 
 currentPoll.options.forEach(option=>{
 
@@ -1450,6 +1359,7 @@ ${option}
 
 
 let resultsHTML="";
+
 
 currentPoll.options.forEach((option,i)=>{
 
@@ -1474,6 +1384,7 @@ ${currentPoll.votes[i]}%
 <div
 class="result-fill"
 style="width:${currentPoll.votes[i]}%">
+
 </div>
 
 </div>
@@ -1546,6 +1457,34 @@ ${resultsHTML}
 }
 
 
+/* OPEN POLL FROM HOME */
+
+function openPollFromHome(category,index){
+
+pollOpenedFrom="home";
+
+currentCategory=category;
+
+currentPoll=
+polls[category][index];
+
+loadSavedResults();
+
+document
+.getElementById("homePage")
+.classList.remove("active");
+
+document
+.getElementById("pollPage")
+.classList.add("active");
+
+renderPoll();
+
+checkSavedVote();
+
+}
+
+
 /* OPEN CATEGORY */
 
 function openCategory(category){
@@ -1567,13 +1506,14 @@ document
 .innerText=
 "نظرسنجی‌های "+category;
 
-const list=
+const list =
 document.getElementById("pollList");
 
 list.innerHTML="";
 
-const categoryPolls=
-polls[category]||[];
+const categoryPolls =
+polls[category] || [];
+
 
 categoryPolls.forEach((poll,index)=>{
 
@@ -1630,8 +1570,10 @@ function openPoll(index){
 
 pollOpenedFrom="category";
 
-currentPoll=
+currentPoll =
 polls[currentCategory][index];
+
+loadSavedResults();
 
 document
 .getElementById("categoryPage")
@@ -1641,123 +1583,10 @@ document
 .getElementById("pollPage")
 .classList.add("active");
 
-const detail=
-document.getElementById("pollDetail");
+renderPoll();
 
-let optionsHTML="";
-
-currentPoll.options.forEach(option=>{
-
-optionsHTML+=`
-
-<div
-class="option"
-onclick="selectOption(this)">
-
-${option}
-
-</div>
-
-`;
 checkSavedVote();
 
-});
-
-
-let resultsHTML="";
-
-currentPoll.options.forEach((option,i)=>{
-
-resultsHTML+=`
-
-<div class="result-row">
-
-<div class="result-label">
-
-<span>
-${option}
-</span>
-
-<span>
-${currentPoll.votes[i]}%
-</span>
-
-</div>
-
-<div class="result-bar">
-
-<div
-class="result-fill"
-style="width:${currentPoll.votes[i]}%">
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-detail.innerHTML=`
-
-<div class="detail-image">
-${currentPoll.emoji}
-</div>
-
-<div class="detail-category">
-دسته‌بندی: ${currentCategory}
-</div>
-
-<div class="detail-title">
-${currentPoll.title}
-</div>
-
-<div class="detail-description">
-${currentPoll.description}
-</div>
-
-<div class="detail-info">
-
-<span>
-⏳ ${currentPoll.info}
-</span>
-
-<span>
-👥 ${currentPoll.voters} نفر
-</span>
-
-</div>
-
-<div class="options">
-${optionsHTML}
-</div>
-
-<button
-class="vote-button"
-onclick="showResult(this)">
-
-ثبت رأی
-
-</button>
-
-<div class="results">
-
-<div class="results-title">
-📊 نتایج نظرسنجی
-</div>
-
-${resultsHTML}
-
-<div class="result-message">
-نتایج فعلی نظرسنجی
-</div>
-
-</div>
-
-`;
-checkSavedVote();
 }
 
 
@@ -1765,20 +1594,22 @@ checkSavedVote();
 
 function selectOption(element){
 
-const pollDetail=
+const pollDetail =
 element.closest("#pollDetail");
 
-const options=
-pollDetail.querySelectorAll(".option");
+const voteButton =
+pollDetail.querySelector(".vote-button");
 
 
-if(
-pollDetail
-.querySelector(".vote-button")
-.disabled
-){
+if(voteButton.disabled){
+
 return;
+
 }
+
+
+const options =
+pollDetail.querySelectorAll(".option");
 
 
 options.forEach(option=>{
@@ -1797,10 +1628,10 @@ element.classList.add("selected");
 
 function showResult(button){
 
-const pollDetail=
+const pollDetail =
 button.closest("#pollDetail");
 
-const selected=
+const selected =
 pollDetail.querySelector(".option.selected");
 
 
@@ -1815,10 +1646,123 @@ return;
 }
 
 
-/* قفل کردن تمام گزینه‌ها */
-
-const options=
+const options =
 pollDetail.querySelectorAll(".option");
+
+
+const selectedIndex =
+Array.from(options).indexOf(selected);
+
+
+/* ذخیره رأی */
+
+const voteKey =
+"didgah_vote_" +
+currentCategory +
+"_" +
+currentPoll.title;
+
+localStorage.setItem(
+voteKey,
+selectedIndex
+);
+
+
+/* تبدیل درصدهای فعلی به تعداد تقریبی رأی */
+
+const currentVotes =
+currentPoll.votes.map(
+percent =>
+Math.max(
+1,
+Math.round(percent)
+)
+);
+
+
+/* اضافه کردن رأی جدید */
+
+currentVotes[selectedIndex]++;
+
+
+/* محاسبه مجموع */
+
+const totalVotes =
+currentVotes.reduce(
+(sum,vote)=>sum+vote,
+0
+);
+
+
+/* محاسبه درصدهای جدید */
+
+let newPercentages =
+currentVotes.map(
+vote =>
+Math.round(
+(vote / totalVotes) * 100
+)
+);
+
+
+/* اصلاح مجموع درصدها به 100 */
+
+let difference =
+100 -
+newPercentages.reduce(
+(sum,percent)=>sum+percent,
+0
+);
+
+newPercentages[selectedIndex] += difference;
+
+
+/* ذخیره نتایج جدید */
+
+currentPoll.votes =
+newPercentages;
+
+localStorage.setItem(
+getPollKey() + "_results",
+JSON.stringify(newPercentages)
+);
+
+
+/* به‌روزرسانی نمودار */
+
+const resultRows =
+pollDetail.querySelectorAll(".result-row");
+
+
+resultRows.forEach((row,index)=>{
+
+const percentage =
+newPercentages[index];
+
+
+const percentageText =
+row.querySelector(
+".result-label span:last-child"
+);
+
+
+const resultFill =
+row.querySelector(
+".result-fill"
+);
+
+
+percentageText.innerText =
+percentage + "%";
+
+
+resultFill.style.width =
+percentage + "%";
+
+});
+
+
+/* قفل کردن گزینه‌ها */
 
 options.forEach(option=>{
 
@@ -1831,29 +1775,30 @@ option.classList.add("locked");
 
 /* نمایش نتایج */
 
-const results=
+const results =
 pollDetail.querySelector(".results");
 
 results.style.display="block";
-/* ذخیره رأی در مرورگر */
 
-const selectedIndex =
-Array.from(options).indexOf(selected);
 
-const pollKey =
-"didgah_vote_" +
-currentCategory +
-"_" +
-currentPoll.title;
+/* افزایش تعداد شرکت‌کنندگان */
 
-localStorage.setItem(
-pollKey,
-selectedIndex
-);
+const currentVoters =
+parseInt(
+currentPoll.voters
+.replace(/[^\d]/g,"")
+) || 0;
+
+
+currentPoll.voters =
+(
+currentVoters + 1
+).toLocaleString("fa-IR");
+
 
 /* غیرفعال کردن دکمه */
 
-button.innerText=
+button.innerText =
 "رأی ثبت شد ✓";
 
 button.disabled=true;
