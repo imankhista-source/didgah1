@@ -13,6 +13,10 @@ content="width=device-width, initial-scale=1.0">
 
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -33,7 +37,9 @@ background:white;
 }
 
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
 
 header{
 padding:24px 20px;
@@ -54,7 +60,9 @@ color:#777;
 }
 
 
-/* Pages */
+/* =========================
+   PAGES
+========================= */
 
 .page{
 display:none;
@@ -65,7 +73,9 @@ display:block;
 }
 
 
-/* Main */
+/* =========================
+   MAIN
+========================= */
 
 main{
 padding:20px 16px 40px;
@@ -79,7 +89,9 @@ margin-bottom:22px;
 }
 
 
-/* Categories */
+/* =========================
+   CATEGORY
+========================= */
 
 .categories{
 display:grid;
@@ -95,6 +107,12 @@ padding:23px 8px;
 text-align:center;
 cursor:pointer;
 box-shadow:0 4px 12px rgba(0,0,0,.05);
+transition:.2s;
+}
+
+.category:hover{
+transform:translateY(-2px);
+box-shadow:0 7px 18px rgba(0,0,0,.09);
 }
 
 .icon{
@@ -114,20 +132,47 @@ margin-top:6px;
 }
 
 
-/* Back */
+/* =========================
+   BACK BUTTON
+========================= */
 
 .back-button{
+display:inline-flex;
+align-items:center;
+gap:8px;
+
 border:none;
-background:#eef0f3;
-padding:10px 15px;
-border-radius:10px;
+
+background:#eef2ff;
+
+color:#4f6df5;
+
+padding:10px 16px;
+
+border-radius:12px;
+
 font-size:14px;
-margin-bottom:18px;
+
+font-weight:bold;
+
 cursor:pointer;
+
+margin-bottom:18px;
+
+box-shadow:0 3px 8px rgba(0,0,0,.06);
+
+transition:.2s;
+}
+
+.back-button:hover{
+background:#e2e8ff;
+transform:translateX(2px);
 }
 
 
-/* Poll Card */
+/* =========================
+   POLL CARD
+========================= */
 
 .poll-card{
 background:white;
@@ -136,13 +181,20 @@ border-radius:18px;
 overflow:hidden;
 margin-bottom:22px;
 box-shadow:0 5px 15px rgba(0,0,0,.06);
+cursor:pointer;
+transition:.2s;
+}
+
+.poll-card:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.09);
 }
 
 
-/* Poll Image */
+/* IMAGE */
 
 .poll-image{
-height:180px;
+height:175px;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -151,7 +203,7 @@ background:#eef1f5;
 }
 
 
-/* Poll Content */
+/* CONTENT */
 
 .poll-content{
 padding:18px;
@@ -177,100 +229,234 @@ color:#666;
 margin-bottom:14px;
 }
 
-
-/* Info */
-
 .poll-info{
 display:flex;
 justify-content:space-between;
 font-size:12px;
 color:#777;
-margin-bottom:15px;
 }
 
 
-/* Options */
+/* =========================
+   POLL DETAIL
+========================= */
+
+.detail-image{
+
+height:210px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:90px;
+
+background:#eef1f5;
+
+border-radius:18px;
+
+margin-bottom:18px;
+}
+
+.detail-category{
+
+font-size:13px;
+
+color:#777;
+
+margin-bottom:8px;
+}
+
+.detail-title{
+
+font-size:23px;
+
+font-weight:bold;
+
+line-height:1.7;
+
+margin-bottom:14px;
+}
+
+.detail-description{
+
+font-size:14px;
+
+line-height:2;
+
+color:#666;
+
+margin-bottom:18px;
+}
+
+.detail-info{
+
+display:flex;
+
+justify-content:space-between;
+
+background:#f7f8fa;
+
+border-radius:12px;
+
+padding:13px;
+
+font-size:12px;
+
+color:#666;
+
+margin-bottom:20px;
+}
+
+
+/* OPTIONS */
 
 .option{
+
 border:1px solid #ddd;
-border-radius:11px;
-padding:13px;
-margin-top:9px;
+
+border-radius:12px;
+
+padding:14px;
+
+margin-top:10px;
+
 cursor:pointer;
+
 transition:.2s;
+
+font-size:15px;
+}
+
+.option:hover{
+
+background:#f1f5ff;
+
+border-color:#4f6df5;
 }
 
 .option.selected{
+
 border-color:#4f6df5;
+
 background:#eef2ff;
+
 font-weight:bold;
 }
 
 
-/* Button */
+/* VOTE BUTTON */
 
 .vote-button{
+
 width:100%;
+
 border:none;
+
 background:#4f6df5;
+
 color:white;
+
 padding:14px;
-border-radius:11px;
-font-size:15px;
-margin-top:15px;
+
+border-radius:12px;
+
+font-size:16px;
+
+margin-top:18px;
+
 cursor:pointer;
 }
 
 .vote-button:disabled{
+
 opacity:.7;
+
 }
 
 
-/* Results */
+/* RESULTS */
 
 .results{
+
 display:none;
-margin-top:18px;
+
+margin-top:22px;
+
+padding-top:18px;
+
+border-top:1px solid #eee;
+}
+
+.results-title{
+
+font-size:17px;
+
+font-weight:bold;
+
+margin-bottom:12px;
 }
 
 .result-row{
-margin-top:11px;
+
+margin-top:12px;
 }
 
 .result-label{
+
 display:flex;
+
 justify-content:space-between;
-font-size:12px;
+
+font-size:13px;
+
 margin-bottom:5px;
 }
 
 .result-bar{
+
 height:9px;
+
 background:#e9edf2;
+
 border-radius:10px;
+
 overflow:hidden;
 }
 
 .result-fill{
+
 height:100%;
+
 background:#4f6df5;
+
 border-radius:10px;
 }
 
 .result-message{
+
 text-align:center;
+
 font-size:12px;
+
 color:#777;
-margin-top:12px;
+
+margin-top:14px;
 }
 
 
-/* Footer */
+/* FOOTER */
 
 .footer{
+
 text-align:center;
+
 font-size:11px;
+
 color:#aaa;
+
 padding:20px;
 }
 
@@ -285,7 +471,9 @@ padding:20px;
 <div class="app">
 
 
-<!-- HOME -->
+<!-- =================================
+     HOME
+================================= -->
 
 <div id="homePage" class="page active">
 
@@ -305,8 +493,11 @@ padding:20px;
 
 <main>
 
+
 <div class="title">
+
 موضوع مورد نظر خود را انتخاب کنید
+
 </div>
 
 
@@ -443,6 +634,7 @@ onclick="openCategory('استانداردها')">
 
 </div>
 
+
 </main>
 
 
@@ -450,7 +642,9 @@ onclick="openCategory('استانداردها')">
 
 
 
-<!-- CATEGORY -->
+<!-- =================================
+     CATEGORY PAGE
+================================= -->
 
 <div id="categoryPage" class="page">
 
@@ -461,7 +655,8 @@ onclick="openCategory('استانداردها')">
 دیدگاه
 </div>
 
-<div class="subtitle"
+<div
+class="subtitle"
 id="categoryTitle">
 </div>
 
@@ -471,10 +666,13 @@ id="categoryTitle">
 <main>
 
 
-<button class="back-button"
+<button
+class="back-button"
 onclick="goHome()">
 
-← بازگشت
+<span>←</span>
+
+<span>بازگشت</span>
 
 </button>
 
@@ -483,11 +681,58 @@ onclick="goHome()">
 
 
 <div class="footer">
+
 دیدگاه — صدای شما، تصویر جامعه
+
 </div>
 
 
 </main>
+
+
+</div>
+
+
+
+<!-- =================================
+     POLL DETAIL PAGE
+================================= -->
+
+<div id="pollPage" class="page">
+
+
+<header>
+
+<div class="logo">
+دیدگاه
+</div>
+
+<div class="subtitle">
+نظرسنجی
+</div>
+
+</header>
+
+
+<main>
+
+
+<button
+class="back-button"
+onclick="goCategory()">
+
+<span>→</span>
+
+<span>بازگشت</span>
+
+</button>
+
+
+<div id="pollDetail"></div>
+
+
+</main>
+
 
 </div>
 
@@ -499,7 +744,9 @@ onclick="goHome()">
 <script>
 
 
-/* Poll Database */
+/* =================================
+   POLL DATA
+================================= */
 
 const polls={
 
@@ -510,10 +757,11 @@ const polls={
 
 emoji:"🎬",
 
-title:"کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
+title:
+"کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
 
 description:
-"نظر شما درباره تأثیر هنر بر جامعه چیست؟",
+"به نظر شما کدام حوزه هنری می‌تواند تأثیر بیشتری بر فرهنگ و جامعه داشته باشد؟ دیدگاه خود را با انتخاب یکی از گزینه‌ها ثبت کنید.",
 
 info:"۶ روز باقی مانده",
 
@@ -535,10 +783,11 @@ votes:[42,31,17,10]
 
 emoji:"🎥",
 
-title:"کدام ژانر فیلم را بیشتر می‌پسندید؟",
+title:
+"کدام ژانر فیلم را بیشتر می‌پسندید؟",
 
 description:
-"اگر قرار باشد فقط یک ژانر را انتخاب کنید، انتخاب شما چیست؟",
+"اگر قرار باشد فقط یک ژانر فیلم را برای تماشا انتخاب کنید، کدام گزینه انتخاب شماست؟",
 
 info:"۴ روز باقی مانده",
 
@@ -560,10 +809,11 @@ votes:[35,29,23,13]
 
 emoji:"🎵",
 
-title:"موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
+title:
+"موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
 
 description:
-"دیدگاه خود را درباره جایگاه موسیقی سنتی در میان نسل جدید بیان کنید.",
+"به نظر شما موسیقی سنتی ایران در میان نسل جدید چه جایگاهی دارد؟",
 
 info:"۸ روز باقی مانده",
 
@@ -589,7 +839,8 @@ votes:[28,37,25,10]
 
 emoji:"⚽",
 
-title:"کدام ورزش را بیشتر دنبال می‌کنید؟",
+title:
+"کدام ورزش را بیشتر دنبال می‌کنید؟",
 
 description:
 "ورزش مورد علاقه خود را انتخاب کنید.",
@@ -618,10 +869,11 @@ votes:[50,20,15,15]
 
 emoji:"🔬",
 
-title:"کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
+title:
+"کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
 
 description:
-"به نظر شما کدام حوزه بیشترین تأثیر را بر آینده خواهد گذاشت؟",
+"به نظر شما کدام حوزه علمی بیشترین تأثیر را بر آینده خواهد داشت؟",
 
 info:"۷ روز باقی مانده",
 
@@ -647,10 +899,11 @@ votes:[38,27,15,20]
 
 emoji:"📚",
 
-title:"مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
+title:
+"مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
 
 description:
-"دیدگاه شما درباره وضعیت مطالعه در جامعه چیست؟",
+"دیدگاه شما درباره وضعیت مطالعه در جامعه امروز چیست؟",
 
 info:"۶ روز باقی مانده",
 
@@ -676,7 +929,8 @@ votes:[15,30,35,20]
 
 emoji:"💰",
 
-title:"مهم‌ترین عامل رشد یک اقتصاد چیست؟",
+title:
+"مهم‌ترین عامل رشد یک اقتصاد چیست؟",
 
 description:
 "کدام عامل را برای رشد اقتصادی مهم‌تر می‌دانید؟",
@@ -705,10 +959,11 @@ votes:[32,25,28,15]
 
 emoji:"🌱",
 
-title:"مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
+title:
+"مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
 
 description:
-"کدام اقدام باید در اولویت قرار گیرد؟",
+"کدام اقدام باید برای حفاظت از محیط زیست در اولویت باشد؟",
 
 info:"۹ روز باقی مانده",
 
@@ -734,10 +989,11 @@ votes:[20,22,38,20]
 
 emoji:"🏛️",
 
-title:"مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
+title:
+"مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
 
 description:
-"از دیدگاه شما کدام عامل بیشترین اهمیت را دارد؟",
+"از دیدگاه شما کدام عامل بیشترین تأثیر را بر کیفیت زندگی دارد؟",
 
 info:"۷ روز باقی مانده",
 
@@ -763,10 +1019,11 @@ votes:[25,30,25,20]
 
 emoji:"🗣️",
 
-title:"برای مفهوم Smartphone کدام واژه فارسی مناسب‌تر است؟",
+title:
+"برای مفهوم Smartphone کدام واژه فارسی مناسب‌تر است؟",
 
 description:
-"یکی از گزینه‌ها را انتخاب کنید.",
+"کدام واژه را برای استفاده عمومی مناسب‌تر می‌دانید؟",
 
 info:"۱۰ روز باقی مانده",
 
@@ -783,15 +1040,22 @@ votes:[55,25,15,5]
 
 }
 
-]
-
-};
+]};
 
 
+let currentCategory="";
 
-/* Open Category */
+let currentPoll=null;
+
+
+/* =================================
+   OPEN CATEGORY
+================================= */
 
 function openCategory(category){
+
+
+currentCategory=category;
 
 
 document
@@ -824,60 +1088,11 @@ polls[category]||[];
 categoryPolls.forEach((poll,index)=>{
 
 
-let optionsHTML="";
-
-
-poll.options.forEach(option=>{
-
-optionsHTML+=`
-
-<div class="option"
-onclick="selectOption(this)">
-
-${option}
-
-</div>
-
-`;
-
-});
-
-
-let resultsHTML="";
-
-
-poll.options.forEach((option,i)=>{
-
-resultsHTML+=`
-
-<div class="result-row">
-
-<div class="result-label">
-
-<span>${option}</span>
-
-<span>${poll.votes[i]}%</span>
-
-</div>
-
-<div class="result-bar">
-
-<div class="result-fill"
-style="width:${poll.votes[i]}%">
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
 list.innerHTML+=`
 
-<div class="poll-card">
+<div
+class="poll-card"
+onclick="openPoll(${index})">
 
 
 <div class="poll-image">
@@ -924,6 +1139,145 @@ ${poll.description}
 </div>
 
 
+</div>
+
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =================================
+   OPEN POLL
+================================= */
+
+function openPoll(index){
+
+
+currentPoll=
+polls[currentCategory][index];
+
+
+document
+.getElementById("categoryPage")
+.classList.remove("active");
+
+
+document
+.getElementById("pollPage")
+.classList.add("active");
+
+
+const detail=
+document.getElementById("pollDetail");
+
+
+let optionsHTML="";
+
+
+currentPoll.options.forEach(option=>{
+
+optionsHTML+=`
+
+<div
+class="option"
+onclick="selectOption(this)">
+
+${option}
+
+</div>
+
+`;
+
+});
+
+
+let resultsHTML="";
+
+
+currentPoll.options.forEach((option,i)=>{
+
+resultsHTML+=`
+
+<div class="result-row">
+
+<div class="result-label">
+
+<span>${option}</span>
+
+<span>${currentPoll.votes[i]}%</span>
+
+</div>
+
+
+<div class="result-bar">
+
+<div
+class="result-fill"
+style="width:${currentPoll.votes[i]}%">
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+detail.innerHTML=`
+
+<div class="detail-image">
+
+${currentPoll.emoji}
+
+</div>
+
+
+<div class="detail-category">
+
+دسته‌بندی: ${currentCategory}
+
+</div>
+
+
+<div class="detail-title">
+
+${currentPoll.title}
+
+</div>
+
+
+<div class="detail-description">
+
+${currentPoll.description}
+
+</div>
+
+
+<div class="detail-info">
+
+<span>
+
+⏳ ${currentPoll.info}
+
+</span>
+
+
+<span>
+
+👥 ${currentPoll.voters} نفر
+
+</span>
+
+</div>
+
+
 <div class="options">
 
 ${optionsHTML}
@@ -942,6 +1296,12 @@ onclick="showResult(this)">
 
 <div class="results">
 
+<div class="results-title">
+
+📊 نتایج نظرسنجی
+
+</div>
+
 ${resultsHTML}
 
 <div class="result-message">
@@ -952,21 +1312,14 @@ ${resultsHTML}
 
 </div>
 
-
-</div>
-
-
-</div>
-
 `;
-
-});
 
 }
 
 
-
-/* Select */
+/* =================================
+   SELECT OPTION
+================================= */
 
 function selectOption(element){
 
@@ -976,8 +1329,10 @@ element.parentElement
 .querySelectorAll(".option");
 
 
-options.forEach(o=>{
-o.classList.remove("selected");
+options.forEach(option=>{
+
+option.classList.remove("selected");
+
 });
 
 
@@ -986,18 +1341,16 @@ element.classList.add("selected");
 }
 
 
-
-/* Vote */
+/* =================================
+   VOTE
+================================= */
 
 function showResult(button){
 
 
-const card=
-button.parentElement;
-
-
 const selected=
-card.querySelector(".option.selected");
+document
+.querySelector(".option.selected");
 
 
 if(!selected){
@@ -1011,7 +1364,8 @@ return;
 }
 
 
-card.querySelector(".results")
+document
+.querySelector(".results")
 .style.display="block";
 
 
@@ -1024,8 +1378,28 @@ button.disabled=true;
 }
 
 
+/* =================================
+   BACK TO CATEGORY
+================================= */
 
-/* Home */
+function goCategory(){
+
+
+document
+.getElementById("pollPage")
+.classList.remove("active");
+
+
+document
+.getElementById("categoryPage")
+.classList.add("active");
+
+}
+
+
+/* =================================
+   BACK HOME
+================================= */
 
 function goHome(){
 
@@ -1040,7 +1414,6 @@ document
 .classList.add("active");
 
 }
-
 
 </script>
 
