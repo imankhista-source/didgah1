@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>دیدگاه</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -45,7 +47,7 @@
     }
 
     main {
-      padding: 22px 18px 35px;
+      padding: 22px 18px 40px;
     }
 
     .title {
@@ -54,6 +56,8 @@
       text-align: center;
       margin-bottom: 22px;
     }
+
+    /* دسته بندی ها */
 
     .categories {
       display: grid;
@@ -74,7 +78,6 @@
 
     .category:hover {
       transform: translateY(-2px);
-      box-shadow: 0 7px 18px rgba(0,0,0,0.09);
     }
 
     .icon {
@@ -92,6 +95,8 @@
       font-size: 11px;
       color: #777;
     }
+
+    /* صفحات */
 
     .page {
       display: none;
@@ -111,12 +116,20 @@
       font-size: 14px;
     }
 
+    /* نظرسنجی */
+
     .poll-card {
       border: 1px solid #e2e5ea;
       border-radius: 16px;
       padding: 18px;
-      margin-bottom: 15px;
+      margin-bottom: 18px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .poll-number {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 8px;
     }
 
     .poll-title {
@@ -126,17 +139,30 @@
       margin-bottom: 15px;
     }
 
+    .poll-info {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
     .option {
       border: 1px solid #ddd;
       border-radius: 10px;
       padding: 12px;
       margin-top: 9px;
       cursor: pointer;
+      transition: 0.2s;
     }
 
     .option:hover {
       background: #f1f5ff;
       border-color: #4f6df5;
+    }
+
+    .option.selected {
+      background: #eef2ff;
+      border-color: #4f6df5;
+      font-weight: bold;
     }
 
     .vote-button {
@@ -151,27 +177,71 @@
       cursor: pointer;
     }
 
-    .empty-message {
+    /* نتایج */
+
+    .results {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .result-row {
+      margin-top: 12px;
+    }
+
+    .result-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .result-bar {
+      height: 9px;
+      background: #e9edf2;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .result-fill {
+      height: 100%;
+      background: #4f6df5;
+      border-radius: 10px;
+    }
+
+    .result-message {
+      margin-top: 12px;
       text-align: center;
+      font-size: 12px;
       color: #777;
-      padding: 35px 10px;
-      line-height: 1.8;
     }
 
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
+
   <!-- صفحه اصلی -->
+
   <div id="homePage" class="page active">
 
     <header>
-      <div class="logo">دیدگاه</div>
-      <div class="subtitle">صدای شما، تصویر جامعه</div>
+
+      <div class="logo">
+        دیدگاه
+      </div>
+
+      <div class="subtitle">
+        صدای شما، تصویر جامعه
+      </div>
+
     </header>
+
 
     <main>
 
@@ -179,55 +249,129 @@
         موضوع مورد نظر خود را انتخاب کنید
       </div>
 
+
       <div class="categories">
 
+
         <div class="category" onclick="openCategory('هنری')">
+
           <div class="icon">🎨</div>
-          <div class="category-name">هنری</div>
-          <div class="category-description">سینما، موسیقی، نقاشی و هنر</div>
+
+          <div class="category-name">
+            هنری
+          </div>
+
+          <div class="category-description">
+            سینما، موسیقی، نقاشی و هنر
+          </div>
+
         </div>
+
 
         <div class="category" onclick="openCategory('ورزشی')">
+
           <div class="icon">⚽</div>
-          <div class="category-name">ورزشی</div>
-          <div class="category-description">ورزش و مسابقات</div>
+
+          <div class="category-name">
+            ورزشی
+          </div>
+
+          <div class="category-description">
+            ورزش و مسابقات
+          </div>
+
         </div>
+
 
         <div class="category" onclick="openCategory('علمی')">
+
           <div class="icon">🔬</div>
-          <div class="category-name">علمی</div>
-          <div class="category-description">علم، فناوری و دانش</div>
+
+          <div class="category-name">
+            علمی
+          </div>
+
+          <div class="category-description">
+            علم، فناوری و دانش
+          </div>
+
         </div>
+
 
         <div class="category" onclick="openCategory('فرهنگی')">
+
           <div class="icon">📚</div>
-          <div class="category-name">فرهنگی</div>
-          <div class="category-description">کتاب، زبان و فرهنگ</div>
+
+          <div class="category-name">
+            فرهنگی
+          </div>
+
+          <div class="category-description">
+            کتاب، زبان و فرهنگ
+          </div>
+
         </div>
+
 
         <div class="category" onclick="openCategory('اقتصادی')">
+
           <div class="icon">💰</div>
-          <div class="category-name">اقتصادی</div>
-          <div class="category-description">اقتصاد و کسب‌وکار</div>
+
+          <div class="category-name">
+            اقتصادی
+          </div>
+
+          <div class="category-description">
+            اقتصاد و کسب‌وکار
+          </div>
+
         </div>
+
 
         <div class="category" onclick="openCategory('طبیعت')">
+
           <div class="icon">🌱</div>
-          <div class="category-name">طبیعت</div>
-          <div class="category-description">محیط زیست و طبیعت</div>
+
+          <div class="category-name">
+            طبیعت
+          </div>
+
+          <div class="category-description">
+            محیط زیست و طبیعت
+          </div>
+
         </div>
+
 
         <div class="category" onclick="openCategory('اجتماعی')">
+
           <div class="icon">🏛️</div>
-          <div class="category-name">اجتماعی</div>
-          <div class="category-description">جامعه و زندگی</div>
+
+          <div class="category-name">
+            اجتماعی
+          </div>
+
+          <div class="category-description">
+            جامعه و زندگی
+          </div>
+
         </div>
 
+
         <div class="category" onclick="openCategory('استانداردها')">
+
           <div class="icon">🗣️</div>
-          <div class="category-name">استانداردها</div>
-          <div class="category-description">پیشنهاد و انتخاب واژه‌ها</div>
+
+          <div class="category-name">
+            استانداردها
+          </div>
+
+          <div class="category-description">
+            پیشنهاد و انتخاب واژه‌ها
+          </div>
+
         </div>
+
 
       </div>
 
@@ -236,72 +380,402 @@
   </div>
 
 
-  <!-- صفحه دسته‌بندی -->
+
+  <!-- صفحه دسته بندی -->
 
   <div id="categoryPage" class="page">
 
+
     <header>
-      <div class="logo">دیدگاه</div>
+
+      <div class="logo">
+        دیدگاه
+      </div>
+
       <div class="subtitle" id="categoryTitle"></div>
+
     </header>
 
+
     <main>
+
 
       <button class="back-button" onclick="goHome()">
         ← بازگشت به دسته‌بندی‌ها
       </button>
 
-      <div id="pollList">
 
-      </div>
+      <div id="pollList"></div>
+
 
     </main>
 
+
   </div>
+
 
 </div>
 
 
+
 <script>
 
-  function openCategory(category) {
 
-    document.getElementById("homePage").classList.remove("active");
+/* اطلاعات نظرسنجی ها */
 
-    document.getElementById("categoryPage").classList.add("active");
+const polls = {
 
-    document.getElementById("categoryTitle").innerText =
-      "نظرسنجی‌های " + category;
 
-    let pollList = document.getElementById("pollList");
+  "هنری": [
 
-    pollList.innerHTML = `
-      
+    {
+      question: "به نظر شما کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
+      options: ["سینما", "موسیقی", "نقاشی", "تئاتر"],
+      votes: [42, 31, 17, 10],
+      voters: 1250,
+      days: 6
+    },
+
+    {
+      question: "کدام ژانر فیلم را بیشتر می‌پسندید؟",
+      options: ["درام", "کمدی", "اکشن", "تاریخی"],
+      votes: [35, 29, 23, 13],
+      voters: 980,
+      days: 4
+    },
+
+    {
+      question: "به نظر شما موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
+      options: ["بسیار محبوب", "نسبتاً محبوب", "کمتر محبوب", "تقریباً فراموش شده"],
+      votes: [28, 37, 25, 10],
+      voters: 760,
+      days: 8
+    }
+
+  ],
+
+
+  "ورزشی": [
+
+    {
+      question: "کدام ورزش را بیشتر دنبال می‌کنید؟",
+      options: ["فوتبال", "والیبال", "بسکتبال", "کشتی"],
+      votes: [50, 20, 15, 15],
+      voters: 1450,
+      days: 5
+    }
+
+  ],
+
+
+  "علمی": [
+
+    {
+      question: "کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
+      options: ["هوش مصنوعی", "پزشکی", "فضا", "انرژی"],
+      votes: [38, 27, 15, 20],
+      voters: 1100,
+      days: 7
+    }
+
+  ],
+
+
+  "فرهنگی": [
+
+    {
+      question: "به نظر شما مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
+      options: ["بسیار خوب", "خوب", "متوسط", "ضعیف"],
+      votes: [15, 30, 35, 20],
+      voters: 830,
+      days: 6
+    }
+
+  ],
+
+
+  "اقتصادی": [
+
+    {
+      question: "مهم‌ترین عامل رشد یک اقتصاد چیست؟",
+      options: ["تولید", "سرمایه‌گذاری", "فناوری", "صادرات"],
+      votes: [32, 25, 28, 15],
+      voters: 920,
+      days: 5
+    }
+
+  ],
+
+
+  "طبیعت": [
+
+    {
+      question: "مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
+      options: ["کاهش مصرف", "بازیافت", "انرژی پاک", "حفاظت از جنگل‌ها"],
+      votes: [20, 22, 38, 20],
+      voters: 710,
+      days: 9
+    }
+
+  ],
+
+
+  "اجتماعی": [
+
+    {
+      question: "به نظر شما مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
+      options: ["آموزش", "اقتصاد", "سلامت", "امنیت"],
+      votes: [25, 30, 25, 20],
+      voters: 890,
+      days: 7
+    }
+
+  ],
+
+
+  "استانداردها": [
+
+    {
+      question: "برای مفهوم «Smartphone» کدام واژه فارسی را مناسب‌تر می‌دانید؟",
+      options: ["گوشی هوشمند", "تلفن هوشمند", "همراه هوشمند", "پیشنهاد دیگر"],
+      votes: [55, 25, 15, 5],
+      voters: 640,
+      days: 10
+    }
+
+  ]
+
+};
+
+
+
+/* باز کردن دسته بندی */
+
+function openCategory(category) {
+
+
+  document.getElementById("homePage")
+    .classList.remove("active");
+
+
+  document.getElementById("categoryPage")
+    .classList.add("active");
+
+
+  document.getElementById("categoryTitle")
+    .innerText = "نظرسنجی‌های " + category;
+
+
+  const pollList =
+    document.getElementById("pollList");
+
+
+  pollList.innerHTML = "";
+
+
+  const categoryPolls =
+    polls[category] || [];
+
+
+  categoryPolls.forEach((poll, index) => {
+
+
+    const total =
+      poll.votes.reduce((a,b) => a + b, 0);
+
+
+    let optionsHTML = "";
+
+
+    poll.options.forEach((option, optionIndex) => {
+
+
+      optionsHTML += `
+
+        <div
+          class="option"
+          onclick="selectOption(this)"
+        >
+
+          ${option}
+
+        </div>
+
+      `;
+
+    });
+
+
+    let resultsHTML = "";
+
+
+    poll.options.forEach((option, optionIndex) => {
+
+
+      resultsHTML += `
+
+        <div class="result-row">
+
+          <div class="result-label">
+
+            <span>${option}</span>
+
+            <span>${poll.votes[optionIndex]}%</span>
+
+          </div>
+
+
+          <div class="result-bar">
+
+            <div
+              class="result-fill"
+              style="width:${poll.votes[optionIndex]}%"
+            ></div>
+
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+
+    pollList.innerHTML += `
+
       <div class="poll-card">
 
-        <div class="poll-title">
-          هنوز نظرسنجی‌ای در بخش ${category} ایجاد نشده است.
+        <div class="poll-number">
+          نظرسنجی ${index + 1}
         </div>
 
-        <div class="empty-message">
-          به‌زودی نظرسنجی‌های این بخش در اینجا نمایش داده می‌شوند.
+
+        <div class="poll-title">
+          ${poll.question}
         </div>
+
+
+        <div class="poll-info">
+          ${poll.voters.toLocaleString('fa-IR')} نفر شرکت کرده‌اند
+          • ${poll.days} روز باقی مانده
+        </div>
+
+
+        <div class="options">
+
+          ${optionsHTML}
+
+        </div>
+
+
+        <button
+          class="vote-button"
+          onclick="showResult(this)"
+        >
+          ثبت رأی
+        </button>
+
+
+        <div class="results">
+
+          ${resultsHTML}
+
+          <div class="result-message">
+            نتایج فعلی نظرسنجی
+          </div>
+
+        </div>
+
 
       </div>
 
     `;
+
+  });
+
+
+}
+
+
+
+/* انتخاب گزینه */
+
+function selectOption(element) {
+
+
+  const options =
+    element.parentElement.querySelectorAll(".option");
+
+
+  options.forEach(option => {
+    option.classList.remove("selected");
+  });
+
+
+  element.classList.add("selected");
+
+}
+
+
+
+/* نمایش نتیجه */
+
+function showResult(button) {
+
+
+  const card =
+    button.parentElement;
+
+
+  const selected =
+    card.querySelector(".option.selected");
+
+
+  if (!selected) {
+
+    alert("لطفاً ابتدا یکی از گزینه‌ها را انتخاب کنید.");
+
+    return;
+
   }
 
 
-  function goHome() {
+  const results =
+    card.querySelector(".results");
 
-    document.getElementById("categoryPage").classList.remove("active");
 
-    document.getElementById("homePage").classList.add("active");
+  results.style.display = "block";
 
-  }
+
+  button.innerText = "رأی ثبت شد ✓";
+
+
+  button.disabled = true;
+
+
+}
+
+
+
+/* بازگشت */
+
+function goHome() {
+
+
+  document.getElementById("categoryPage")
+    .classList.remove("active");
+
+
+  document.getElementById("homePage")
+    .classList.add("active");
+
+
+}
+
 
 </script>
 
+
 </body>
+
 </html>
