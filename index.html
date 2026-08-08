@@ -12,10 +12,6 @@ content="width=device-width, initial-scale=1.0">
 
 <style>
 
-/* =========================
-   GENERAL
-========================= */
-
 *{
 box-sizing:border-box;
 margin:0;
@@ -38,9 +34,7 @@ direction:ltr;
 }
 
 
-/* =========================
-   PERSIAN TEXT
-========================= */
+/* متن فارسی */
 
 .logo,
 .subtitle,
@@ -61,16 +55,13 @@ direction:rtl;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
 padding:24px 20px;
 text-align:center;
 background:white;
 border-bottom:1px solid #eee;
-direction:ltr;
 }
 
 .logo{
@@ -85,9 +76,7 @@ color:#777;
 }
 
 
-/* =========================
-   PAGES
-========================= */
+/* PAGES */
 
 .page{
 display:none;
@@ -98,9 +87,7 @@ display:block;
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main{
 padding:20px 16px 40px;
@@ -115,9 +102,7 @@ margin-bottom:22px;
 }
 
 
-/* =========================
-   CATEGORY
-========================= */
+/* CATEGORY */
 
 .categories{
 display:grid;
@@ -159,17 +144,12 @@ margin-top:6px;
 }
 
 
-/* =========================
-   BACK BUTTON
-========================= */
+/* BACK BUTTON */
 
 .back-button{
 display:flex;
-
 align-items:center;
-
 justify-content:flex-start;
-
 gap:8px;
 
 border:none;
@@ -208,27 +188,17 @@ line-height:1;
 }
 
 
-/* =========================
-   POLL CARD
-========================= */
+/* POLL CARD */
 
 .poll-card{
 background:white;
-
 border:1px solid #e1e5ea;
-
 border-radius:18px;
-
 overflow:hidden;
-
 margin-bottom:22px;
-
 box-shadow:0 5px 15px rgba(0,0,0,.06);
-
 cursor:pointer;
-
 transition:.2s;
-
 direction:ltr;
 }
 
@@ -237,33 +207,19 @@ transform:translateY(-2px);
 box-shadow:0 8px 20px rgba(0,0,0,.09);
 }
 
-
-/* IMAGE */
-
 .poll-image{
 height:175px;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 font-size:70px;
-
 background:#eef1f5;
-
 direction:ltr;
 }
 
-
-/* CONTENT */
-
 .poll-content{
 padding:18px;
-
 direction:rtl;
-
 text-align:right;
 }
 
@@ -289,224 +245,153 @@ margin-bottom:14px;
 
 .poll-info{
 display:flex;
-
 justify-content:space-between;
-
 font-size:12px;
-
 color:#777;
-
 direction:ltr;
 }
 
 
-/* =========================
-   POLL DETAIL
-========================= */
+/* POLL DETAIL */
 
 .detail-image{
-
 height:210px;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 font-size:90px;
-
 background:#eef1f5;
-
 border-radius:18px;
-
 margin-bottom:18px;
-
 direction:ltr;
 }
 
 .detail-category{
-
 font-size:13px;
-
 color:#777;
-
 margin-bottom:8px;
-
 text-align:right;
 }
 
 .detail-title{
-
 font-size:23px;
-
 font-weight:bold;
-
 line-height:1.7;
-
 margin-bottom:14px;
-
 text-align:right;
 }
 
 .detail-description{
-
 font-size:14px;
-
 line-height:2;
-
 color:#666;
-
 margin-bottom:18px;
-
 text-align:right;
 }
 
 .detail-info{
-
 display:flex;
-
 justify-content:space-between;
-
 background:#f7f8fa;
-
 border-radius:12px;
-
 padding:13px;
-
 font-size:12px;
-
 color:#666;
-
 margin-bottom:20px;
-
 direction:ltr;
 }
 
 
-/* =========================
-   OPTIONS
-========================= */
+/* OPTIONS */
 
 .options{
 direction:rtl;
 }
 
 .option{
-
 border:1px solid #ddd;
-
 border-radius:12px;
-
 padding:14px;
-
 margin-top:10px;
-
 cursor:pointer;
-
 transition:.2s;
-
 font-size:15px;
-
 text-align:right;
 }
 
 .option:hover{
-
 background:#f1f5ff;
-
 border-color:#4f6df5;
 }
 
 .option.selected{
-
 border-color:#4f6df5;
-
 background:#eef2ff;
-
 font-weight:bold;
 }
 
 
-/* =========================
-   VOTE BUTTON
-========================= */
+/* بعد از ثبت رأی */
+
+.option.locked{
+cursor:default;
+}
+
+.option.locked:hover{
+background:inherit;
+border-color:#ddd;
+}
+
+
+/* VOTE BUTTON */
 
 .vote-button{
-
 width:100%;
-
 border:none;
-
 background:#4f6df5;
-
 color:white;
-
 padding:14px;
-
 border-radius:12px;
-
 font-size:16px;
-
 margin-top:18px;
-
 cursor:pointer;
-
 direction:rtl;
+transition:.2s;
 }
 
 .vote-button:disabled{
-
-opacity:.7;
-
+opacity:.6;
+cursor:not-allowed;
 }
 
 
-/* =========================
-   RESULTS
-========================= */
+/* RESULTS */
 
 .results{
-
 display:none;
-
 margin-top:22px;
-
 padding-top:18px;
-
 border-top:1px solid #eee;
-
 direction:ltr;
 }
 
 .results-title{
-
 font-size:17px;
-
 font-weight:bold;
-
 margin-bottom:12px;
-
 text-align:right;
 }
 
 .result-row{
-
 margin-top:12px;
-
 direction:ltr;
 }
 
 .result-label{
-
 display:flex;
-
 justify-content:space-between;
-
 font-size:13px;
-
 margin-bottom:5px;
-
 direction:ltr;
 }
 
@@ -520,61 +405,38 @@ direction:ltr;
 }
 
 
-/* =========================
-   CHART
-   LEFT → RIGHT
-========================= */
+/* CHART LEFT TO RIGHT */
 
 .result-bar{
-
 height:9px;
-
 background:#e9edf2;
-
 border-radius:10px;
-
 overflow:hidden;
-
 direction:ltr;
-
 width:100%;
 }
 
 .result-fill{
-
 height:100%;
-
 background:#4f6df5;
-
 border-radius:0 10px 10px 0;
-
 transform-origin:left center;
 }
 
 .result-message{
-
 text-align:center;
-
 font-size:12px;
-
 color:#777;
-
 margin-top:14px;
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .footer{
-
 text-align:center;
-
 font-size:11px;
-
 color:#aaa;
-
 padding:20px;
 }
 
@@ -589,883 +451,6 @@ padding:20px;
 <div class="app">
 
 
-<!-- =========================
-     HOME PAGE
-========================= -->
+<!-- HOME -->
 
-<div id="homePage" class="page active">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div class="subtitle">
-صدای شما، تصویر جامعه
-</div>
-
-</header>
-
-
-<main>
-
-<div class="title">
-موضوع مورد نظر خود را انتخاب کنید
-</div>
-
-
-<div class="categories">
-
-
-<div class="category"
-onclick="openCategory('هنری')">
-
-<div class="icon">🎨</div>
-
-<div class="category-name">
-هنری
-</div>
-
-<div class="category-description">
-سینما، موسیقی، نقاشی و هنر
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('ورزشی')">
-
-<div class="icon">⚽</div>
-
-<div class="category-name">
-ورزشی
-</div>
-
-<div class="category-description">
-ورزش و مسابقات
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('علمی')">
-
-<div class="icon">🔬</div>
-
-<div class="category-name">
-علمی
-</div>
-
-<div class="category-description">
-علم و فناوری
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('فرهنگی')">
-
-<div class="icon">📚</div>
-
-<div class="category-name">
-فرهنگی
-</div>
-
-<div class="category-description">
-کتاب، زبان و فرهنگ
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('اقتصادی')">
-
-<div class="icon">💰</div>
-
-<div class="category-name">
-اقتصادی
-</div>
-
-<div class="category-description">
-اقتصاد و کسب‌وکار
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('طبیعت')">
-
-<div class="icon">🌱</div>
-
-<div class="category-name">
-طبیعت
-</div>
-
-<div class="category-description">
-محیط زیست
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('اجتماعی')">
-
-<div class="icon">🏛️</div>
-
-<div class="category-name">
-اجتماعی
-</div>
-
-<div class="category-description">
-جامعه و زندگی
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('استانداردها')">
-
-<div class="icon">🗣️</div>
-
-<div class="category-name">
-استانداردها
-</div>
-
-<div class="category-description">
-انتخاب واژه‌ها
-</div>
-
-</div>
-
-
-</div>
-
-</main>
-
-</div>
-
-
-
-<!-- =========================
-     CATEGORY PAGE
-========================= -->
-
-<div id="categoryPage" class="page">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div
-class="subtitle"
-id="categoryTitle">
-</div>
-
-</header>
-
-
-<main>
-
-
-<button
-class="back-button"
-onclick="goHome()">
-
-<span>
-بازگشت
-</span>
-
-<span class="back-arrow">
-←
-</span>
-
-</button>
-
-
-<div id="pollList"></div>
-
-
-<div class="footer">
-دیدگاه — صدای شما، تصویر جامعه
-</div>
-
-
-</main>
-
-</div>
-
-
-
-<!-- =========================
-     POLL PAGE
-========================= -->
-
-<div id="pollPage" class="page">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div class="subtitle">
-نظرسنجی
-</div>
-
-</header>
-
-
-<main>
-
-
-<button
-class="back-button"
-onclick="goCategory()">
-
-<span>
-بازگشت
-</span>
-
-<span class="back-arrow">
-←
-</span>
-
-</button>
-
-
-<div id="pollDetail"></div>
-
-
-</main>
-
-</div>
-
-
-</div>
-
-
-
-<script>
-
-
-/* =========================
-   POLL DATABASE
-========================= */
-
-const polls={
-
-
-"هنری":[
-
-{
-
-emoji:"🎬",
-
-title:
-"کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
-
-description:
-"به نظر شما کدام حوزه هنری می‌تواند تأثیر بیشتری بر فرهنگ و جامعه داشته باشد؟ دیدگاه خود را با انتخاب یکی از گزینه‌ها ثبت کنید.",
-
-info:"۶ روز باقی مانده",
-
-voters:"۱٬۲۵۰",
-
-options:[
-"سینما",
-"موسیقی",
-"نقاشی",
-"تئاتر"
-],
-
-votes:[42,31,17,10]
-
-},
-
-
-{
-
-emoji:"🎥",
-
-title:
-"کدام ژانر فیلم را بیشتر می‌پسندید؟",
-
-description:
-"اگر قرار باشد فقط یک ژانر فیلم را برای تماشا انتخاب کنید، کدام گزینه انتخاب شماست؟",
-
-info:"۴ روز باقی مانده",
-
-voters:"۹۸۰",
-
-options:[
-"درام",
-"کمدی",
-"اکشن",
-"تاریخی"
-],
-
-votes:[35,29,23,13]
-
-},
-
-
-{
-
-emoji:"🎵",
-
-title:
-"موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
-
-description:
-"به نظر شما موسیقی سنتی ایران در میان نسل جدید چه جایگاهی دارد؟",
-
-info:"۸ روز باقی مانده",
-
-voters:"۷۶۰",
-
-options:[
-"بسیار محبوب",
-"نسبتاً محبوب",
-"کمتر محبوب",
-"تقریباً فراموش شده"
-],
-
-votes:[28,37,25,10]
-
-}
-
-],
-
-
-"ورزشی":[
-
-{
-
-emoji:"⚽",
-
-title:
-"کدام ورزش را بیشتر دنبال می‌کنید؟",
-
-description:
-"ورزش مورد علاقه خود را انتخاب کنید.",
-
-info:"۵ روز باقی مانده",
-
-voters:"۱٬۴۵۰",
-
-options:[
-"فوتبال",
-"والیبال",
-"بسکتبال",
-"کشتی"
-],
-
-votes:[50,20,15,15]
-
-}
-
-],
-
-
-"علمی":[
-
-{
-
-emoji:"🔬",
-
-title:
-"کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
-
-description:
-"به نظر شما کدام حوزه علمی بیشترین تأثیر را بر آینده خواهد داشت؟",
-
-info:"۷ روز باقی مانده",
-
-voters:"۱٬۱۰۰",
-
-options:[
-"هوش مصنوعی",
-"پزشکی",
-"فضا",
-"انرژی"
-],
-
-votes:[38,27,15,20]
-
-}
-
-],
-
-
-"فرهنگی":[
-
-{
-
-emoji:"📚",
-
-title:
-"مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
-
-description:
-"دیدگاه شما درباره وضعیت مطالعه در جامعه امروز چیست؟",
-
-info:"۶ روز باقی مانده",
-
-voters:"۸۳۰",
-
-options:[
-"بسیار خوب",
-"خوب",
-"متوسط",
-"ضعیف"
-],
-
-votes:[15,30,35,20]
-
-}
-
-],
-
-
-"اقتصادی":[
-
-{
-
-emoji:"💰",
-
-title:
-"مهم‌ترین عامل رشد یک اقتصاد چیست؟",
-
-description:
-"کدام عامل را برای رشد اقتصادی مهم‌تر می‌دانید؟",
-
-info:"۵ روز باقی مانده",
-
-voters:"۹۲۰",
-
-options:[
-"تولید",
-"سرمایه‌گذاری",
-"فناوری",
-"صادرات"
-],
-
-votes:[32,25,28,15]
-
-}
-
-],
-
-
-"طبیعت":[
-
-{
-
-emoji:"🌱",
-
-title:
-"مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
-
-description:
-"کدام اقدام باید برای حفاظت از محیط زیست در اولویت باشد؟",
-
-info:"۹ روز باقی مانده",
-
-voters:"۷۱۰",
-
-options:[
-"کاهش مصرف",
-"بازیافت",
-"انرژی پاک",
-"حفاظت از جنگل‌ها"
-],
-
-votes:[20,22,38,20]
-
-}
-
-],
-
-
-"اجتماعی":[
-
-{
-
-emoji:"🏛️",
-
-title:
-"مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
-
-description:
-"از دیدگاه شما کدام عامل بیشترین تأثیر را بر کیفیت زندگی دارد؟",
-
-info:"۷ روز باقی مانده",
-
-voters:"۸۹۰",
-
-options:[
-"آموزش",
-"اقتصاد",
-"سلامت",
-"امنیت"
-],
-
-votes:[25,30,25,20]
-
-}
-
-],
-
-
-"استانداردها":[
-
-{
-
-emoji:"🗣️",
-
-title:
-"برای مفهوم Smartphone کدام واژه فارسی مناسب‌تر است؟",
-
-description:
-"کدام واژه را برای استفاده عمومی مناسب‌تر می‌دانید؟",
-
-info:"۱۰ روز باقی مانده",
-
-voters:"۶۴۰",
-
-options:[
-"گوشی هوشمند",
-"تلفن هوشمند",
-"همراه هوشمند",
-"پیشنهاد دیگر"
-],
-
-votes:[55,25,15,5]
-
-}
-
-]};
-
-
-let currentCategory="";
-
-let currentPoll=null;
-
-
-/* =========================
-   OPEN CATEGORY
-========================= */
-
-function openCategory(category){
-
-currentCategory=category;
-
-document
-.getElementById("homePage")
-.classList.remove("active");
-
-document
-.getElementById("categoryPage")
-.classList.add("active");
-
-document
-.getElementById("categoryTitle")
-.innerText=
-"نظرسنجی‌های "+category;
-
-const list=
-document.getElementById("pollList");
-
-list.innerHTML="";
-
-const categoryPolls=
-polls[category]||[];
-
-categoryPolls.forEach((poll,index)=>{
-
-list.innerHTML+=`
-
-<div
-class="poll-card"
-onclick="openPoll(${index})">
-
-<div class="poll-image">
-${poll.emoji}
-</div>
-
-<div class="poll-content">
-
-<div class="poll-category">
-نظرسنجی ${index+1}
-</div>
-
-<div class="poll-title">
-${poll.title}
-</div>
-
-<div class="poll-description">
-${poll.description}
-</div>
-
-<div class="poll-info">
-
-<span>
-⏳ ${poll.info}
-</span>
-
-<span>
-👥 ${poll.voters} شرکت‌کننده
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-/* =========================
-   OPEN POLL
-========================= */
-
-function openPoll(index){
-
-currentPoll=
-polls[currentCategory][index];
-
-document
-.getElementById("categoryPage")
-.classList.remove("active");
-
-document
-.getElementById("pollPage")
-.classList.add("active");
-
-const detail=
-document.getElementById("pollDetail");
-
-let optionsHTML="";
-
-currentPoll.options.forEach(option=>{
-
-optionsHTML+=`
-
-<div
-class="option"
-onclick="selectOption(this)">
-
-${option}
-
-</div>
-
-`;
-
-});
-
-
-let resultsHTML="";
-
-currentPoll.options.forEach((option,i)=>{
-
-resultsHTML+=`
-
-<div class="result-row">
-
-<div class="result-label">
-
-<span>
-${option}
-</span>
-
-<span>
-${currentPoll.votes[i]}%
-</span>
-
-</div>
-
-<div class="result-bar">
-
-<div
-class="result-fill"
-style="width:${currentPoll.votes[i]}%">
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-detail.innerHTML=`
-
-<div class="detail-image">
-${currentPoll.emoji}
-</div>
-
-<div class="detail-category">
-دسته‌بندی: ${currentCategory}
-</div>
-
-<div class="detail-title">
-${currentPoll.title}
-</div>
-
-<div class="detail-description">
-${currentPoll.description}
-</div>
-
-<div class="detail-info">
-
-<span>
-⏳ ${currentPoll.info}
-</span>
-
-<span>
-👥 ${currentPoll.voters} نفر
-</span>
-
-</div>
-
-<div class="options">
-${optionsHTML}
-</div>
-
-<button
-class="vote-button"
-onclick="showResult(this)">
-
-ثبت رأی
-
-</button>
-
-<div class="results">
-
-<div class="results-title">
-📊 نتایج نظرسنجی
-</div>
-
-${resultsHTML}
-
-<div class="result-message">
-نتایج فعلی نظرسنجی
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/* =========================
-   SELECT OPTION
-========================= */
-
-function selectOption(element){
-
-const options=
-element.parentElement
-.querySelectorAll(".option");
-
-options.forEach(option=>{
-option.classList.remove("selected");
-});
-
-element.classList.add("selected");
-
-}
-
-
-/* =========================
-   VOTE
-========================= */
-
-function showResult(button){
-
-const selected=
-button
-.parentElement
-.querySelector(".option.selected");
-
-if(!selected){
-
-alert(
-"لطفاً ابتدا یکی از گزینه‌ها را انتخاب کنید."
-);
-
-return;
-
-}
-
-const results=
-button
-.parentElement
-.querySelector(".results");
-
-results.style.display="block";
-
-button.innerText=
-"رأی ثبت شد ✓";
-
-button.disabled=true;
-
-}
-
-
-/* =========================
-   BACK TO CATEGORY
-========================= */
-
-function goCategory(){
-
-document
-.getElementById("pollPage")
-.classList.remove("active");
-
-document
-.getElementById("categoryPage")
-.classList.add("active");
-
-}
-
-
-/* =========================
-   BACK HOME
-========================= */
-
-function goHome(){
-
-document
-.getElementById("categoryPage")
-.classList.remove("active");
-
-document
-.getElementById("homePage")
-.classList.add("active");
-
-}
-
-</script>
-
-</body>
-
-</html>
+<div id="homePage" class="
