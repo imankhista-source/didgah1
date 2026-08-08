@@ -6,55 +6,9 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>دیدگاه</title>
-/* RESPONSIVE PHONE LAYOUT */
-
-html,
-body{
-width:100%;
-height:100%;
-margin:0;
-padding:0;
-}
-
-body{
-min-height:100dvh;
-height:100dvh;
-overflow:hidden;
-}
-
-.app{
-width:100%;
-max-width:480px;
-height:100dvh;
-min-height:100dvh;
-margin:auto;
-overflow:hidden;
-}
-
-/* صفحات همیشه اندازه فضای قابل مشاهده گوشی */
-
-.page{
-width:100%;
-height:100dvh;
-min-height:100dvh;
-overflow:hidden;
-}
-
-/* سازگاری با گوشی‌های مختلف */
-
-@supports not (height:100dvh){
-
-body,
-.app,
-.page{
-height:100vh;
-min-height:100vh;
-}
-
-}
 
 <style>
 
@@ -65,23 +19,44 @@ padding:0;
 font-family:Arial,sans-serif;
 }
 
+html,
+body{
+width:100%;
+height:100%;
+margin:0;
+padding:0;
+}
+
 body{
 background:#f4f6f9;
 color:#222;
 direction:ltr;
+overflow:hidden;
 }
+
+/* APP */
 
 .app{
 width:100%;
 max-width:480px;
-height:100vh;
-min-height:100vh;
+height:100dvh;
+min-height:100dvh;
 margin:auto;
 background:white;
 direction:ltr;
 overflow:hidden;
 }
 
+/* سازگاری با مرورگرهای قدیمی‌تر */
+
+@supports not (height:100dvh){
+
+.app{
+height:100vh;
+min-height:100vh;
+}
+
+}
 
 /* متن فارسی */
 
@@ -111,6 +86,7 @@ padding:24px 20px;
 text-align:center;
 background:white;
 border-bottom:1px solid #eee;
+flex-shrink:0;
 }
 
 .logo{
@@ -129,25 +105,40 @@ color:#777;
 
 .page{
 display:none;
-height:100vh;
+width:100%;
+height:100dvh;
+min-height:0;
 overflow:hidden;
 }
 
 .page.active{
 display:flex;
 flex-direction:column;
+height:100dvh;
+min-height:0;
+}
+
+@supports not (height:100dvh){
+
+.page,
+.page.active{
 height:100vh;
+}
+
 }
 
 
 /* MAIN */
 
-
 main{
 padding:16px 16px 20px;
 direction:ltr;
 flex:1;
-overflow:hidden;
+min-height:0;
+overflow-y:auto;
+overflow-x:hidden;
+-webkit-overflow-scrolling:touch;
+overscroll-behavior-y:contain;
 }
 
 .title{
@@ -156,6 +147,8 @@ font-size:20px;
 font-weight:bold;
 margin-bottom:22px;
 }
+
+
 /* ACTIVE POLLS */
 
 .active-section{
@@ -224,6 +217,7 @@ font-size:11px;
 color:#888;
 margin-top:4px;
 }
+
 
 /* CATEGORY */
 
@@ -298,6 +292,8 @@ box-shadow:0 3px 8px rgba(0,0,0,.06);
 transition:.2s;
 
 direction:ltr;
+
+flex-shrink:0;
 }
 
 .back-button:hover{
@@ -527,9 +523,6 @@ text-align:right;
 direction:ltr;
 }
 
-
-/* CHART LEFT TO RIGHT */
-
 .result-bar{
 height:9px;
 background:#e9edf2;
@@ -562,70 +555,25 @@ font-size:11px;
 color:#aaa;
 padding:20px;
 }
-/* RESPONSIVE PHONE LAYOUT */
 
-html,
-body{
-width:100%;
-height:100%;
-margin:0;
-padding:0;
-}
 
-body{
-min-height:100dvh;
-height:100dvh;
-overflow:hidden;
-}
-
-.app{
-width:100%;
-max-width:480px;
-height:100dvh;
-min-height:100dvh;
-margin:auto;
-overflow:hidden;
-}
-
-/* صفحات همیشه اندازه فضای قابل مشاهده گوشی */
-
-.page{
-width:100%;
-height:100dvh;
-min-height:100dvh;
-overflow:hidden;
-}
-
-/* سازگاری با گوشی‌های مختلف */
-
-@supports not (height:100dvh){
-
-body,
-.app,
-.page{
-height:100vh;
-min-height:100vh;
-}
-
-}
-
-/* تنظیم خودکار بر اساس ارتفاع صفحه */
+/* RESPONSIVE */
 
 @media (max-height:750px){
 
 header{
-padding-top:14px;
-padding-bottom:14px;
+padding-top:16px;
+padding-bottom:16px;
 }
 
 main{
 padding-top:12px;
-padding-bottom:14px;
+padding-bottom:16px;
 }
 
 .category{
-padding-top:16px;
-padding-bottom:16px;
+padding-top:18px;
+padding-bottom:18px;
 }
 
 .icon{
@@ -634,11 +582,12 @@ font-size:32px;
 
 }
 
+
 @media (max-height:650px){
 
 header{
-padding-top:10px;
-padding-bottom:10px;
+padding-top:11px;
+padding-bottom:11px;
 }
 
 .logo{
@@ -651,12 +600,43 @@ font-size:11px;
 
 main{
 padding-top:10px;
-padding-bottom:10px;
+padding-bottom:12px;
+}
+
+.title{
+font-size:18px;
+margin-bottom:16px;
+}
+
+.active-section{
+margin-bottom:18px;
+}
+
+.active-polls{
+gap:8px;
+}
+
+.active-poll{
+padding:9px;
+}
+
+.active-poll-icon{
+width:40px;
+height:40px;
+font-size:21px;
+}
+
+.active-poll-title{
+font-size:12px;
+}
+
+.categories{
+gap:9px;
 }
 
 .category{
-padding-top:11px;
-padding-bottom:11px;
+padding-top:12px;
+padding-bottom:12px;
 }
 
 .icon{
@@ -678,6 +658,15 @@ height:140px;
 font-size:65px;
 }
 
+.detail-title{
+font-size:20px;
+}
+
+.detail-description{
+font-size:13px;
+line-height:1.7;
+}
+
 .option{
 padding:10px;
 margin-top:6px;
@@ -689,13 +678,28 @@ margin-top:10px;
 }
 
 }
+
+
+/* SAFE AREA FOR IPHONE */
+
+@supports (padding: max(0px)){
+
+header{
+padding-top:max(16px, env(safe-area-inset-top));
+}
+
+main{
+padding-bottom:max(20px, env(safe-area-inset-bottom));
+}
+
+}
+
 </style>
 
 </head>
 
 
 <body>
-
 
 <div class="app">
 
@@ -722,6 +726,8 @@ margin-top:10px;
 <div class="title">
 موضوع مورد نظر خود را انتخاب کنید
 </div>
+
+
 <div class="active-section">
 
 <div class="section-title">
@@ -729,6 +735,7 @@ margin-top:10px;
 </div>
 
 <div class="active-polls">
+
 
 <div
 class="active-poll"
@@ -798,9 +805,11 @@ onclick="openPollFromHome('ورزشی',0)">
 
 </div>
 
+
 </div>
 
 </div>
+
 
 <div class="categories">
 
@@ -940,7 +949,6 @@ onclick="openCategory('استانداردها')">
 </div>
 
 
-
 <!-- CATEGORY PAGE -->
 
 <div id="categoryPage" class="page">
@@ -960,7 +968,6 @@ id="categoryTitle">
 
 
 <main>
-
 
 <button
 class="back-button"
@@ -990,7 +997,6 @@ onclick="goHome()">
 </div>
 
 
-
 <!-- POLL PAGE -->
 
 <div id="pollPage" class="page">
@@ -1009,7 +1015,6 @@ onclick="goHome()">
 
 
 <main>
-
 
 <button
 class="back-button"
@@ -1035,7 +1040,6 @@ onclick="goCategory()">
 
 
 </div>
-
 
 
 <script>
@@ -1338,13 +1342,21 @@ votes:[55,25,15,5]
 ]};
 
 
+/* CURRENT STATE */
+
 let currentCategory="";
 
 let currentPoll=null;
+
+let pollOpenedFrom="category";
+
+
 /* OPEN POLL FROM HOME */
 
 function openPollFromHome(category,index){
+
 pollOpenedFrom="home";
+
 currentCategory=category;
 
 currentPoll=
@@ -1476,10 +1488,13 @@ ${resultsHTML}
 
 }
 
+
 /* OPEN CATEGORY */
 
 function openCategory(category){
+
 pollOpenedFrom="category";
+
 currentCategory=category;
 
 document
@@ -1555,6 +1570,8 @@ ${poll.description}
 /* OPEN POLL */
 
 function openPoll(index){
+
+pollOpenedFrom="category";
 
 currentPoll=
 polls[currentCategory][index];
@@ -1697,8 +1714,6 @@ const options=
 pollDetail.querySelectorAll(".option");
 
 
-/* اگر رأی قبلاً ثبت شده باشد */
-
 if(
 pollDetail
 .querySelector(".vote-button")
@@ -1774,7 +1789,7 @@ button.disabled=true;
 }
 
 
-/* BACK TO CATEGORY */
+/* BACK TO CATEGORY OR HOME */
 
 function goCategory(){
 
