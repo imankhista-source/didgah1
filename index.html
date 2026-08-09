@@ -1,927 +1,456 @@
-<style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
-}
+/* ==================================================
+   USER ACCOUNT SYSTEM
+================================================== */
 
-html,
-body{
-width:100%;
-height:100%;
-margin:0;
-padding:0;
-}
 
-body{
-background:#f4f6f9;
-color:#222;
-direction:ltr;
-overflow:hidden;
-}
+/* CHECK LOGIN WHEN APP STARTS */
 
-.app{
-width:100%;
-max-width:480px;
-height:100dvh;
-min-height:100dvh;
-margin:auto;
-background:white;
-direction:ltr;
-overflow:hidden;
-}
+document.addEventListener("DOMContentLoaded",function(){
 
-@supports not (height:100dvh){
+const rememberedUser =
+localStorage.getItem("didgah_remembered_user");
 
-.app{
-height:100vh;
-min-height:100vh;
-}
+const sessionUser =
+sessionStorage.getItem("didgah_session_user");
 
-}
 
-.logo,
-.subtitle,
-.title,
-.category-name,
-.category-description,
-.poll-category,
-.poll-title,
-.poll-description,
-.detail-category,
-.detail-title,
-.detail-description,
-.option,
-.results-title,
-.result-message,
-.footer,
-.account-title,
-.account-message{
-direction:rtl;
-}
+if(rememberedUser || sessionUser){
 
-header{
-padding:24px 20px;
-text-align:center;
-background:white;
-border-bottom:1px solid #eee;
-flex-shrink:0;
-}
+const username =
+rememberedUser || sessionUser;
 
-.logo{
-font-size:30px;
-font-weight:bold;
-}
+enterApp(username);
 
-.subtitle{
-margin-top:7px;
-font-size:14px;
-color:#777;
-}
+}else{
 
-.page{
-display:none;
-width:100%;
-height:100dvh;
-min-height:0;
-overflow:hidden;
-}
+showLogin();
 
-.page.active{
-display:flex;
-flex-direction:column;
-height:100dvh;
-min-height:0;
 }
 
-@supports not (height:100dvh){
+});
 
-.page,
-.page.active{
-height:100vh;
-}
 
-}
+/* SHOW LOGIN */
 
-main{
-padding:16px 16px 20px;
-direction:ltr;
-flex:1;
-min-height:0;
-overflow-y:auto;
-overflow-x:hidden;
--webkit-overflow-scrolling:touch;
-overscroll-behavior-y:contain;
-}
+function showLogin(){
 
-.title{
-text-align:center;
-font-size:20px;
-font-weight:bold;
-margin-bottom:18px;
-}
+document
+.getElementById("loginHeader")
+.classList.remove("hidden");
 
-.active-section{
-margin-top:10px;
-margin-bottom:28px;
-}
+document
+.getElementById("mainHeader")
+.classList.add("hidden");
 
-.section-title{
-font-size:18px;
-font-weight:bold;
-text-align:right;
-direction:rtl;
-margin-bottom:14px;
-}
+document
+.getElementById("accountMain")
+.classList.remove("hidden");
 
-.active-polls{
-display:flex;
-flex-direction:column;
-gap:12px;
-}
+document
+.getElementById("pollHomeMain")
+.classList.add("hidden");
 
-.active-poll{
-display:flex;
-align-items:center;
-gap:12px;
-padding:13px;
-background:#f8f9fc;
-border:1px solid #e5e8ee;
-border-radius:15px;
-cursor:pointer;
-transition:.2s;
-direction:ltr;
-}
+document
+.getElementById("loginForm")
+.classList.remove("hidden");
 
-.active-poll:hover{
-transform:translateY(-2px);
-box-shadow:0 5px 14px rgba(0,0,0,.07);
-}
+document
+.getElementById("registerForm")
+.classList.add("hidden");
 
-.active-poll-icon{
-width:48px;
-height:48px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:white;
-border-radius:12px;
-font-size:25px;
-flex-shrink:0;
-}
+closeAccountMenu();
 
-.active-poll-content{
-flex:1;
-direction:rtl;
-text-align:right;
 }
 
-.active-poll-title{
-font-size:14px;
-font-weight:bold;
-line-height:1.6;
-}
 
-.active-poll-info{
-font-size:11px;
-color:#888;
-margin-top:4px;
-}
+/* SHOW REGISTER */
 
-.categories{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-direction:ltr;
-}
+function showRegister(){
 
-.category{
-background:white;
-border:1px solid #e1e5ea;
-border-radius:18px;
-padding:23px 8px;
-text-align:center;
-cursor:pointer;
-box-shadow:0 4px 12px rgba(0,0,0,.05);
-transition:.2s;
-}
+document
+.getElementById("loginForm")
+.classList.add("hidden");
 
-.category:hover{
-transform:translateY(-2px);
-box-shadow:0 7px 18px rgba(0,0,0,.09);
-}
+document
+.getElementById("registerForm")
+.classList.remove("hidden");
 
-.icon{
-font-size:38px;
-margin-bottom:9px;
 }
 
-.category-name{
-font-weight:bold;
-font-size:16px;
-}
 
-.category-description{
-font-size:11px;
-color:#777;
-margin-top:6px;
-}
+/* LOGIN */
 
+function loginUser(){
 
-/* =========================
-ACCOUNT BUTTON
-========================= */
-
-.account-button{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:7px;
-margin:0 0 22px auto;
-border:none;
-background:#f1f4ff;
-color:#4f6df5;
-padding:10px 16px;
-border-radius:12px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-direction:rtl;
-transition:.2s;
-position:relative;
-}
+const username =
+document
+.getElementById("loginUsername")
+.value
+.trim();
 
-.account-button:hover{
-background:#e5eaff;
-}
+const password =
+document
+.getElementById("loginPassword")
+.value;
 
+const remember =
+document
+.getElementById("rememberMe")
+.checked;
 
-/* =========================
-ACCOUNT DROPDOWN
-========================= */
 
-.account-menu-wrapper{
-position:relative;
-display:flex;
-justify-content:flex-end;
-margin-bottom:18px;
-}
+const message =
+document
+.getElementById("loginMessage");
 
-.account-menu{
-display:none;
-position:absolute;
-top:48px;
-right:0;
-width:180px;
-background:white;
-border:1px solid #e1e5ea;
-border-radius:14px;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
-padding:8px;
-z-index:20;
-direction:rtl;
-}
 
-.account-menu.show{
-display:block;
-}
+if(!username || !password){
 
-.account-menu-user{
-padding:10px 12px;
-font-size:13px;
-font-weight:bold;
-color:#555;
-border-bottom:1px solid #eee;
-margin-bottom:5px;
-word-break:break-word;
-}
+message.innerText =
+"لطفاً نام کاربری و رمز عبور را وارد کنید.";
 
-.account-menu-item{
-width:100%;
-border:none;
-background:white;
-padding:11px 12px;
-border-radius:10px;
-text-align:right;
-font-size:13px;
-cursor:pointer;
-direction:rtl;
-}
+return;
 
-.account-menu-item:hover{
-background:#f5f6f8;
 }
 
-.account-menu-item.logout{
-color:#d9534f;
-}
 
+const savedUsername =
+localStorage.getItem(
+"didgah_registered_username"
+);
 
-/* =========================
-BACK BUTTON
-========================= */
-
-.back-button{
-display:flex;
-align-items:center;
-justify-content:flex-start;
-gap:8px;
-border:none;
-background:#eef2ff;
-color:#4f6df5;
-padding:10px 16px;
-border-radius:12px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-margin-bottom:18px;
-box-shadow:0 3px 8px rgba(0,0,0,.06);
-transition:.2s;
-direction:ltr;
-flex-shrink:0;
-}
+const savedPassword =
+localStorage.getItem(
+"didgah_registered_password"
+);
 
-.back-button:hover{
-background:#e2e8ff;
-transform:translateX(-2px);
-}
 
-.back-arrow{
-font-size:17px;
-line-height:1;
-}
+if(
+username !== savedUsername ||
+password !== savedPassword
+){
 
+message.innerText =
+"نام کاربری یا رمز عبور صحیح نیست.";
 
-/* =========================
-POLL CARD
-========================= */
-
-.poll-card{
-background:white;
-border:1px solid #e1e5ea;
-border-radius:18px;
-overflow:hidden;
-margin-bottom:22px;
-box-shadow:0 5px 15px rgba(0,0,0,.06);
-cursor:pointer;
-transition:.2s;
-direction:ltr;
-}
+return;
 
-.poll-card:hover{
-transform:translateY(-2px);
-box-shadow:0 8px 20px rgba(0,0,0,.09);
 }
 
-.poll-image{
-height:175px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-background:#eef1f5;
-direction:ltr;
-}
 
-.poll-content{
-padding:18px;
-direction:rtl;
-text-align:right;
-}
+if(remember){
 
-.poll-category{
-font-size:12px;
-color:#777;
-margin-bottom:7px;
-}
+localStorage.setItem(
+"didgah_remembered_user",
+username
+);
 
-.poll-title{
-font-size:18px;
-font-weight:bold;
-line-height:1.7;
-margin-bottom:10px;
-}
+sessionStorage.removeItem(
+"didgah_session_user"
+);
 
-.poll-description{
-font-size:13px;
-line-height:1.8;
-color:#666;
-margin-bottom:14px;
-}
+}else{
 
-.poll-info{
-display:flex;
-justify-content:space-between;
-font-size:12px;
-color:#777;
-direction:ltr;
-}
+sessionStorage.setItem(
+"didgah_session_user",
+username
+);
 
+localStorage.removeItem(
+"didgah_remembered_user"
+);
 
-/* =========================
-POLL DETAIL
-========================= */
-
-.detail-image{
-height:210px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:90px;
-background:#eef1f5;
-border-radius:18px;
-margin-bottom:18px;
-direction:ltr;
 }
 
-.detail-category{
-font-size:13px;
-color:#777;
-margin-bottom:8px;
-text-align:right;
-}
 
-.detail-title{
-font-size:23px;
-font-weight:bold;
-line-height:1.7;
-margin-bottom:14px;
-text-align:right;
-}
+enterApp(username);
 
-.detail-description{
-font-size:14px;
-line-height:2;
-color:#666;
-margin-bottom:18px;
-text-align:right;
 }
 
-.detail-info{
-display:flex;
-justify-content:space-between;
-background:#f7f8fa;
-border-radius:12px;
-padding:13px;
-font-size:12px;
-color:#666;
-margin-bottom:20px;
-direction:ltr;
-}
 
+/* REGISTER */
 
-/* =========================
-OPTIONS
-========================= */
+function registerUser(){
 
-.options{
-direction:rtl;
-}
+const username =
+document
+.getElementById("registerUsername")
+.value
+.trim();
 
-.option{
-border:1px solid #ddd;
-border-radius:12px;
-padding:14px;
-margin-top:10px;
-cursor:pointer;
-transition:.2s;
-font-size:15px;
-text-align:right;
-}
+const password =
+document
+.getElementById("registerPassword")
+.value;
 
-.option:hover{
-background:#f1f5ff;
-border-color:#4f6df5;
-}
+const password2 =
+document
+.getElementById("registerPassword2")
+.value;
 
-.option.selected{
-border-color:#4f6df5;
-background:#eef2ff;
-font-weight:bold;
-}
+const remember =
+document
+.getElementById("registerRemember")
+.checked;
 
-.option.locked{
-cursor:default;
-}
+const message =
+document
+.getElementById("registerMessage");
 
-.option.locked:hover{
-background:inherit;
-border-color:#ddd;
-}
 
+if(!username || !password || !password2){
 
-/* =========================
-VOTE BUTTON
-========================= */
-
-.vote-button{
-width:100%;
-border:none;
-background:#4f6df5;
-color:white;
-padding:14px;
-border-radius:12px;
-font-size:16px;
-margin-top:18px;
-cursor:pointer;
-direction:rtl;
-transition:.2s;
-}
+message.innerText =
+"لطفاً همه قسمت‌ها را کامل کنید.";
 
-.vote-button:disabled{
-opacity:.6;
-cursor:not-allowed;
+return;
+
 }
 
 
-/* =========================
-RESULTS
-========================= */
+if(password.length < 6){
 
-.results{
-display:none;
-margin-top:22px;
-padding-top:18px;
-border-top:1px solid #eee;
-direction:ltr;
-}
+message.innerText =
+"رمز عبور باید حداقل ۶ کاراکتر باشد.";
 
-.results-title{
-font-size:17px;
-font-weight:bold;
-margin-bottom:12px;
-text-align:right;
-}
+return;
 
-.result-row{
-margin-top:12px;
-direction:ltr;
 }
 
-.result-label{
-display:flex;
-justify-content:space-between;
-font-size:13px;
-margin-bottom:5px;
-direction:ltr;
-}
 
-.result-label span:first-child{
-direction:rtl;
-text-align:right;
-}
+if(password !== password2){
 
-.result-label span:last-child{
-direction:ltr;
-}
+message.innerText =
+"تکرار رمز عبور با رمز عبور یکسان نیست.";
 
-.result-bar{
-height:9px;
-background:#e9edf2;
-border-radius:10px;
-overflow:hidden;
-direction:ltr;
-width:100%;
-}
+return;
 
-.result-fill{
-height:100%;
-background:#4f6df5;
-border-radius:0 10px 10px 0;
-transform-origin:left center;
-transition:width .4s ease;
 }
 
-.result-message{
-text-align:center;
-font-size:12px;
-color:#777;
-margin-top:14px;
-}
 
+/* SAVE ACCOUNT FOR PROTOTYPE */
 
-/* =========================
-ACCOUNT PAGE
-========================= */
-
-.account-box{
-background:white;
-border:1px solid #e1e5ea;
-border-radius:18px;
-padding:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.06);
-direction:rtl;
-}
+localStorage.setItem(
+"didgah_registered_username",
+username
+);
 
-.account-title{
-font-size:21px;
-font-weight:bold;
-text-align:center;
-margin-bottom:20px;
-}
+localStorage.setItem(
+"didgah_registered_password",
+password
+);
 
-.account-input{
-width:100%;
-border:1px solid #ddd;
-border-radius:12px;
-padding:13px;
-font-size:15px;
-margin-top:10px;
-outline:none;
-direction:rtl;
-text-align:right;
-background:white;
-}
 
-.account-input:focus{
-border-color:#4f6df5;
-}
+if(remember){
 
-.account-submit{
-width:100%;
-border:none;
-background:#4f6df5;
-color:white;
-padding:13px;
-border-radius:12px;
-font-size:15px;
-font-weight:bold;
-margin-top:16px;
-cursor:pointer;
-transition:.2s;
-}
+localStorage.setItem(
+"didgah_remembered_user",
+username
+);
 
-.account-submit:hover{
-background:#405edb;
-}
+sessionStorage.removeItem(
+"didgah_session_user"
+);
 
-.forgot-password{
-display:block;
-text-align:left;
-margin-top:12px;
-font-size:13px;
-color:#4f6df5;
-cursor:pointer;
-}
+}else{
 
-.remember-row{
-display:flex;
-align-items:center;
-justify-content:flex-start;
-gap:8px;
-margin-top:14px;
-font-size:13px;
-color:#555;
-direction:rtl;
-cursor:pointer;
-}
+sessionStorage.setItem(
+"didgah_session_user",
+username
+);
 
-.remember-row input{
-width:17px;
-height:17px;
-accent-color:#4f6df5;
-cursor:pointer;
-}
+localStorage.removeItem(
+"didgah_remembered_user"
+);
 
-.account-switch{
-text-align:center;
-margin-top:20px;
-font-size:13px;
-color:#777;
 }
 
-.account-switch span{
-color:#4f6df5;
-font-weight:bold;
-cursor:pointer;
-}
 
-.account-message{
-text-align:center;
-font-size:13px;
-margin-top:14px;
-color:#777;
-min-height:20px;
-}
+enterApp(username);
 
-.account-back{
-margin-bottom:18px;
 }
 
 
-/* =========================
-LOGGED IN ACCOUNT
-========================= */
+/* ENTER APP */
 
-.account-user-box{
-text-align:center;
-direction:rtl;
-}
+function enterApp(username){
 
-.account-user-icon{
-font-size:55px;
-margin-bottom:12px;
-}
+document
+.getElementById("loginHeader")
+.classList.add("hidden");
 
-.account-user-name{
-font-size:19px;
-font-weight:bold;
-margin-bottom:8px;
-}
+document
+.getElementById("accountMain")
+.classList.add("hidden");
 
-.account-user-status{
-font-size:13px;
-color:#777;
-margin-bottom:20px;
-}
+document
+.getElementById("mainHeader")
+.classList.remove("hidden");
 
-.logout-button{
-width:100%;
-border:none;
-background:#f1f1f1;
-color:#555;
-padding:13px;
-border-radius:12px;
-font-size:15px;
-font-weight:bold;
-cursor:pointer;
-}
+document
+.getElementById("pollHomeMain")
+.classList.remove("hidden");
 
-.logout-button:hover{
-background:#e8e8e8;
-}
 
+document
+.getElementById("homePage")
+.classList.add("active");
 
-/* =========================
-FOOTER
-========================= */
 
-.footer{
-text-align:center;
-font-size:11px;
-color:#aaa;
-padding:20px;
-}
+document
+.getElementById("categoryPage")
+.classList.remove("active");
 
+document
+.getElementById("pollPage")
+.classList.remove("active");
 
-/* =========================
-RESPONSIVE
-========================= */
 
-@media (max-height:750px){
+closeAccountMenu();
 
-header{
-padding-top:16px;
-padding-bottom:16px;
 }
 
-main{
-padding-top:12px;
-padding-bottom:16px;
-}
 
-.category{
-padding-top:18px;
-padding-bottom:18px;
-}
+/* ACCOUNT MENU */
 
-.icon{
-font-size:32px;
-}
+function toggleAccountMenu(){
 
-}
+const menu =
+document.getElementById("accountMenu");
 
-@media (max-height:650px){
+menu.classList.toggle("show");
 
-header{
-padding-top:11px;
-padding-bottom:11px;
 }
 
-.logo{
-font-size:25px;
-}
 
-.subtitle{
-font-size:11px;
-}
+/* CLOSE ACCOUNT MENU */
 
-main{
-padding-top:10px;
-padding-bottom:12px;
-}
+function closeAccountMenu(){
 
-.title{
-font-size:18px;
-margin-bottom:16px;
-}
+const menu =
+document.getElementById("accountMenu");
 
-.active-section{
-margin-bottom:18px;
-}
+if(menu){
 
-.active-polls{
-gap:8px;
-}
+menu.classList.remove("show");
 
-.active-poll{
-padding:9px;
 }
 
-.active-poll-icon{
-width:40px;
-height:40px;
-font-size:21px;
 }
 
-.active-poll-title{
-font-size:12px;
-}
 
-.categories{
-gap:9px;
-}
+/* LOGOUT */
 
-.category{
-padding-top:12px;
-padding-bottom:12px;
-}
+function logoutUser(){
 
-.icon{
-font-size:27px;
-margin-bottom:5px;
-}
+localStorage.removeItem(
+"didgah_remembered_user"
+);
 
-.category-name{
-font-size:14px;
-}
+sessionStorage.removeItem(
+"didgah_session_user"
+);
 
-.category-description{
-font-size:9px;
-margin-top:3px;
-}
 
-.detail-image{
-height:140px;
-font-size:65px;
-}
+/*
+رمز حساب را فعلاً حذف نمی‌کنیم
+تا کاربر بعداً بتواند دوباره
+با همان حساب وارد شود.
+*/
 
-.detail-title{
-font-size:20px;
-}
+document
+.getElementById("loginUsername")
+.value="";
 
-.detail-description{
-font-size:13px;
-line-height:1.7;
-}
+document
+.getElementById("loginPassword")
+.value="";
 
-.option{
-padding:10px;
-margin-top:6px;
-}
+document
+.getElementById("loginMessage")
+.innerText="";
 
-.vote-button{
-padding:10px;
-margin-top:10px;
-}
 
-.account-box{
-padding:15px;
-}
+showLogin();
 
-.account-title{
-font-size:18px;
-margin-bottom:14px;
 }
 
-.account-input{
-padding:10px;
-}
 
-.account-submit{
-padding:10px;
-margin-top:10px;
-}
+/* FORGOT PASSWORD */
 
+function forgotPassword(){
+
+alert(
+"در نسخه فعلی آزمایشی، بازیابی رمز عبور هنوز به سرور متصل نشده است. این قسمت را در مرحله اتصال به سیستم واقعی حساب کاربری فعال می‌کنیم."
+);
+
 }
+
+
+/* PROTECT CATEGORY */
 
+const originalOpenCategory =
+openCategory;
 
-/* =========================
-SAFE AREA
-========================= */
+openCategory=function(category){
 
-@supports (padding: max(0px)){
+if(
+!localStorage.getItem("didgah_remembered_user") &&
+!sessionStorage.getItem("didgah_session_user")
+){
 
-header{
-padding-top:max(16px, env(safe-area-inset-top));
+showLogin();
+
+return;
+
 }
+
+originalOpenCategory(category);
+
+};
 
-main{
-padding-bottom:max(20px, env(safe-area-inset-bottom));
+
+/* PROTECT POLL */
+
+const originalOpenPoll =
+openPoll;
+
+openPoll=function(index){
+
+if(
+!localStorage.getItem("didgah_remembered_user") &&
+!sessionStorage.getItem("didgah_session_user")
+){
+
+showLogin();
+
+return;
+
 }
+
+originalOpenPoll(index);
 
+};
+
+
+/* PROTECT HOME POLL */
+
+const originalOpenPollFromHome =
+openPollFromHome;
+
+openPollFromHome=function(pollId){
+
+if(
+!localStorage.getItem("didgah_remembered_user") &&
+!sessionStorage.getItem("didgah_session_user")
+){
+
+showLogin();
+
+return;
+
 }
+
+originalOpenPollFromHome(pollId);
 
-</style>
+};
