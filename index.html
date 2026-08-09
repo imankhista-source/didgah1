@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="fa" dir="ltr">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<title>دیدگاه</title>
-
 <style>
 
 *{
@@ -242,33 +230,98 @@ margin-top:6px;
 }
 
 
-/* ACCOUNT BUTTON */
+/* =========================
+ACCOUNT BUTTON
+========================= */
 
 .account-button{
 display:flex;
 align-items:center;
 justify-content:center;
 gap:7px;
-margin:0 auto 22px;
+margin:0 0 22px auto;
 border:none;
 background:#f1f4ff;
 color:#4f6df5;
-padding:11px 20px;
+padding:10px 16px;
 border-radius:12px;
 font-size:14px;
 font-weight:bold;
 cursor:pointer;
 direction:rtl;
 transition:.2s;
+position:relative;
 }
 
 .account-button:hover{
 background:#e5eaff;
-transform:translateY(-1px);
 }
 
 
-/* BACK BUTTON */
+/* =========================
+ACCOUNT DROPDOWN
+========================= */
+
+.account-menu-wrapper{
+position:relative;
+display:flex;
+justify-content:flex-end;
+margin-bottom:18px;
+}
+
+.account-menu{
+display:none;
+position:absolute;
+top:48px;
+right:0;
+width:180px;
+background:white;
+border:1px solid #e1e5ea;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+padding:8px;
+z-index:20;
+direction:rtl;
+}
+
+.account-menu.show{
+display:block;
+}
+
+.account-menu-user{
+padding:10px 12px;
+font-size:13px;
+font-weight:bold;
+color:#555;
+border-bottom:1px solid #eee;
+margin-bottom:5px;
+word-break:break-word;
+}
+
+.account-menu-item{
+width:100%;
+border:none;
+background:white;
+padding:11px 12px;
+border-radius:10px;
+text-align:right;
+font-size:13px;
+cursor:pointer;
+direction:rtl;
+}
+
+.account-menu-item:hover{
+background:#f5f6f8;
+}
+
+.account-menu-item.logout{
+color:#d9534f;
+}
+
+
+/* =========================
+BACK BUTTON
+========================= */
 
 .back-button{
 display:flex;
@@ -301,7 +354,9 @@ line-height:1;
 }
 
 
-/* POLL CARD */
+/* =========================
+POLL CARD
+========================= */
 
 .poll-card{
 background:white;
@@ -365,7 +420,9 @@ direction:ltr;
 }
 
 
-/* POLL DETAIL */
+/* =========================
+POLL DETAIL
+========================= */
 
 .detail-image{
 height:210px;
@@ -415,7 +472,9 @@ direction:ltr;
 }
 
 
-/* OPTIONS */
+/* =========================
+OPTIONS
+========================= */
 
 .options{
 direction:rtl;
@@ -453,7 +512,9 @@ border-color:#ddd;
 }
 
 
-/* VOTE BUTTON */
+/* =========================
+VOTE BUTTON
+========================= */
 
 .vote-button{
 width:100%;
@@ -475,7 +536,9 @@ cursor:not-allowed;
 }
 
 
-/* RESULTS */
+/* =========================
+RESULTS
+========================= */
 
 .results{
 display:none;
@@ -539,7 +602,9 @@ margin-top:14px;
 }
 
 
-/* ACCOUNT PAGE */
+/* =========================
+ACCOUNT PAGE
+========================= */
 
 .account-box{
 background:white;
@@ -601,6 +666,25 @@ color:#4f6df5;
 cursor:pointer;
 }
 
+.remember-row{
+display:flex;
+align-items:center;
+justify-content:flex-start;
+gap:8px;
+margin-top:14px;
+font-size:13px;
+color:#555;
+direction:rtl;
+cursor:pointer;
+}
+
+.remember-row input{
+width:17px;
+height:17px;
+accent-color:#4f6df5;
+cursor:pointer;
+}
+
 .account-switch{
 text-align:center;
 margin-top:20px;
@@ -627,7 +711,9 @@ margin-bottom:18px;
 }
 
 
-/* LOGGED IN */
+/* =========================
+LOGGED IN ACCOUNT
+========================= */
 
 .account-user-box{
 text-align:center;
@@ -668,7 +754,9 @@ background:#e8e8e8;
 }
 
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 
 .footer{
 text-align:center;
@@ -678,7 +766,9 @@ padding:20px;
 }
 
 
-/* RESPONSIVE */
+/* =========================
+RESPONSIVE
+========================= */
 
 @media (max-height:750px){
 
@@ -818,7 +908,9 @@ margin-top:10px;
 }
 
 
-/* SAFE AREA */
+/* =========================
+SAFE AREA
+========================= */
 
 @supports (padding: max(0px)){
 
@@ -833,1868 +925,3 @@ padding-bottom:max(20px, env(safe-area-inset-bottom));
 }
 
 </style>
-
-</head>
-
-
-<body>
-
-<div class="app">
-
-
-<!-- HOME -->
-
-<div id="homePage" class="page active">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div class="subtitle">
-صدای شما، تصویر جامعه
-</div>
-
-</header>
-
-
-<main>
-
-<div class="title">
-موضوع مورد نظر خود را انتخاب کنید
-</div>
-
-
-<!-- ACCOUNT BUTTON -->
-
-<button
-class="account-button"
-onclick="openAccountPage()">
-
-<span>👤</span>
-
-<span>حساب کاربری</span>
-
-</button>
-
-
-<div class="active-section">
-
-<div class="section-title">
-🔥 نظرسنجی‌های فعال
-</div>
-
-<div class="active-polls">
-
-
-<div
-class="active-poll"
-onclick="openPollFromHome('art_001')">
-
-<div class="active-poll-icon">
-🎬
-</div>
-
-<div class="active-poll-content">
-
-<div class="active-poll-title">
-کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟
-</div>
-
-<div class="active-poll-info">
-⏳ ۶ روز باقی مانده
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="active-poll"
-onclick="openPollFromHome('science_001')">
-
-<div class="active-poll-icon">
-🔬
-</div>
-
-<div class="active-poll-content">
-
-<div class="active-poll-title">
-کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟
-</div>
-
-<div class="active-poll-info">
-⏳ ۷ روز باقی مانده
-</div>
-
-</div>
-
-</div>
-
-
-<div
-class="active-poll"
-onclick="openPollFromHome('sport_001')">
-
-<div class="active-poll-icon">
-⚽
-</div>
-
-<div class="active-poll-content">
-
-<div class="active-poll-title">
-کدام ورزش را بیشتر دنبال می‌کنید؟
-</div>
-
-<div class="active-poll-info">
-⏳ ۵ روز باقی مانده
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<div class="categories">
-
-
-<div class="category"
-onclick="openCategory('هنری')">
-
-<div class="icon">🎨</div>
-
-<div class="category-name">
-هنری
-</div>
-
-<div class="category-description">
-سینما، موسیقی، نقاشی و هنر
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('ورزشی')">
-
-<div class="icon">⚽</div>
-
-<div class="category-name">
-ورزشی
-</div>
-
-<div class="category-description">
-ورزش و مسابقات
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('علمی')">
-
-<div class="icon">🔬</div>
-
-<div class="category-name">
-علمی
-</div>
-
-<div class="category-description">
-علم و فناوری
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('فرهنگی')">
-
-<div class="icon">📚</div>
-
-<div class="category-name">
-فرهنگی
-</div>
-
-<div class="category-description">
-کتاب، زبان و فرهنگ
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('اقتصادی')">
-
-<div class="icon">💰</div>
-
-<div class="category-name">
-اقتصادی
-</div>
-
-<div class="category-description">
-اقتصاد و کسب‌وکار
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('طبیعت')">
-
-<div class="icon">🌱</div>
-
-<div class="category-name">
-طبیعت
-</div>
-
-<div class="category-description">
-محیط زیست
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('اجتماعی')">
-
-<div class="icon">🏛️</div>
-
-<div class="category-name">
-اجتماعی
-</div>
-
-<div class="category-description">
-جامعه و زندگی
-</div>
-
-</div>
-
-
-<div class="category"
-onclick="openCategory('استانداردها')">
-
-<div class="icon">🗣️</div>
-
-<div class="category-name">
-استانداردها
-</div>
-
-<div class="category-description">
-انتخاب واژه‌ها
-</div>
-
-</div>
-
-
-</div>
-
-</main>
-
-</div>
-
-
-<!-- CATEGORY PAGE -->
-
-<div id="categoryPage" class="page">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div
-class="subtitle"
-id="categoryTitle">
-</div>
-
-</header>
-
-
-<main>
-
-<button
-class="back-button"
-onclick="goHome()">
-
-<span>
-بازگشت
-</span>
-
-<span class="back-arrow">
-←
-</span>
-
-</button>
-
-
-<div id="pollList"></div>
-
-
-<div class="footer">
-دیدگاه — صدای شما، تصویر جامعه
-</div>
-
-
-</main>
-
-</div>
-
-
-<!-- POLL PAGE -->
-
-<div id="pollPage" class="page">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div class="subtitle">
-نظرسنجی
-</div>
-
-</header>
-
-
-<main>
-
-<button
-class="back-button"
-onclick="goCategory()">
-
-<span>
-بازگشت
-</span>
-
-<span class="back-arrow">
-←
-</span>
-
-</button>
-
-
-<div id="pollDetail"></div>
-
-
-</main>
-
-</div>
-
-
-<!-- ACCOUNT PAGE -->
-
-<div id="accountPage" class="page">
-
-<header>
-
-<div class="logo">
-دیدگاه
-</div>
-
-<div class="subtitle">
-حساب کاربری
-</div>
-
-</header>
-
-
-<main>
-
-<button
-class="back-button account-back"
-onclick="goHomeFromAccount()">
-
-<span>
-بازگشت
-</span>
-
-<span class="back-arrow">
-←
-</span>
-
-</button>
-
-
-<div class="account-box">
-
-
-<!-- LOGIN -->
-
-<div id="loginBox">
-
-<div class="account-title">
-ورود به حساب کاربری
-</div>
-
-
-<input
-id="loginUsername"
-class="account-input"
-type="text"
-placeholder="نام کاربری">
-
-
-<input
-id="loginPassword"
-class="account-input"
-type="password"
-placeholder="رمز عبور">
-
-
-<button
-class="account-submit"
-onclick="loginUser()">
-
-ورود
-
-</button>
-
-
-<span
-class="forgot-password"
-onclick="forgotPassword()">
-
-فراموشی رمز عبور
-
-</span>
-
-
-<div class="account-switch">
-
-حساب کاربری ندارید؟
-
-<span onclick="showRegister()">
-ثبت‌نام
-</span>
-
-</div>
-
-
-<div
-id="loginMessage"
-class="account-message">
-</div>
-
-</div>
-
-
-<!-- REGISTER -->
-
-<div
-id="registerBox"
-style="display:none;">
-
-<div class="account-title">
-ایجاد حساب کاربری
-</div>
-
-
-<input
-id="registerUsername"
-class="account-input"
-type="text"
-placeholder="نام کاربری">
-
-
-<input
-id="registerPassword"
-class="account-input"
-type="password"
-placeholder="رمز عبور">
-
-
-<input
-id="registerPasswordRepeat"
-class="account-input"
-type="password"
-placeholder="تکرار رمز عبور">
-
-
-<button
-class="account-submit"
-onclick="registerUser()">
-
-ثبت‌نام
-
-</button>
-
-
-<div class="account-switch">
-
-قبلاً حساب ساخته‌اید؟
-
-<span onclick="showLogin()">
-ورود
-</span>
-
-</div>
-
-
-<div
-id="registerMessage"
-class="account-message">
-</div>
-
-</div>
-
-
-<!-- LOGGED IN -->
-
-<div
-id="loggedInBox"
-style="display:none;">
-
-<div class="account-user-box">
-
-<div class="account-user-icon">
-👤
-</div>
-
-<div
-id="accountUserName"
-class="account-user-name">
-</div>
-
-<div class="account-user-status">
-شما وارد حساب کاربری خود هستید.
-</div>
-
-
-<button
-class="logout-button"
-onclick="logoutUser()">
-
-خروج از حساب
-
-</button>
-
-</div>
-
-</div>
-
-
-</div>
-
-</main>
-
-</div>
-
-
-</div>
-
-
-<script>
-
-
-/*
-==================================================
-POLL DATABASE
-==================================================
-*/
-
-const polls={
-
-"هنری":[
-
-{
-id:"art_001",
-emoji:"🎬",
-title:"کدام حوزه هنری تأثیر بیشتری بر جامعه دارد؟",
-description:"به نظر شما کدام حوزه هنری می‌تواند تأثیر بیشتری بر فرهنگ و جامعه داشته باشد؟ دیدگاه خود را با انتخاب یکی از گزینه‌ها ثبت کنید.",
-info:"۶ روز باقی مانده",
-voters:"۱٬۲۵۰",
-options:[
-"سینما",
-"موسیقی",
-"نقاشی",
-"تئاتر"
-],
-votes:[42,31,17,10]
-},
-
-{
-id:"art_002",
-emoji:"🎥",
-title:"کدام ژانر فیلم را بیشتر می‌پسندید؟",
-description:"اگر قرار باشد فقط یک ژانر فیلم را برای تماشا انتخاب کنید، کدام گزینه انتخاب شماست؟",
-info:"۴ روز باقی مانده",
-voters:"۹۸۰",
-options:[
-"درام",
-"کمدی",
-"اکشن",
-"تاریخی"
-],
-votes:[35,29,23,13]
-},
-
-{
-id:"art_003",
-emoji:"🎵",
-title:"موسیقی سنتی ایران چه جایگاهی در نسل جدید دارد؟",
-description:"به نظر شما موسیقی سنتی ایران در میان نسل جدید چه جایگاهی دارد؟",
-info:"۸ روز باقی مانده",
-voters:"۷۶۰",
-options:[
-"بسیار محبوب",
-"نسبتاً محبوب",
-"کمتر محبوب",
-"تقریباً فراموش شده"
-],
-votes:[28,37,25,10]
-}
-
-],
-
-"ورزشی":[
-
-{
-id:"sport_001",
-emoji:"⚽",
-title:"کدام ورزش را بیشتر دنبال می‌کنید؟",
-description:"ورزش مورد علاقه خود را انتخاب کنید.",
-info:"۵ روز باقی مانده",
-voters:"۱٬۴۵۰",
-options:[
-"فوتبال",
-"والیبال",
-"بسکتبال",
-"کشتی"
-],
-votes:[50,20,15,15]
-}
-
-],
-
-"علمی":[
-
-{
-id:"science_001",
-emoji:"🔬",
-title:"کدام حوزه علمی در آینده اهمیت بیشتری خواهد داشت؟",
-description:"به نظر شما کدام حوزه علمی بیشترین تأثیر را بر آینده خواهد داشت؟",
-info:"۷ روز باقی مانده",
-voters:"۱٬۱۰۰",
-options:[
-"هوش مصنوعی",
-"پزشکی",
-"فضا",
-"انرژی"
-],
-votes:[38,27,15,20]
-}
-
-],
-
-"فرهنگی":[
-
-{
-id:"culture_001",
-emoji:"📚",
-title:"مطالعه کتاب در جامعه امروز چه وضعیتی دارد؟",
-description:"دیدگاه شما درباره وضعیت مطالعه در جامعه امروز چیست؟",
-info:"۶ روز باقی مانده",
-voters:"۸۳۰",
-options:[
-"بسیار خوب",
-"خوب",
-"متوسط",
-"ضعیف"
-],
-votes:[15,30,35,20]
-}
-
-],
-
-"اقتصادی":[
-
-{
-id:"economy_001",
-emoji:"💰",
-title:"مهم‌ترین عامل رشد یک اقتصاد چیست؟",
-description:"کدام عامل را برای رشد اقتصادی مهم‌تر می‌دانید؟",
-info:"۵ روز باقی مانده",
-voters:"۹۲۰",
-options:[
-"تولید",
-"سرمایه‌گذاری",
-"فناوری",
-"صادرات"
-],
-votes:[32,25,28,15]
-}
-
-],
-
-"طبیعت":[
-
-{
-id:"nature_001",
-emoji:"🌱",
-title:"مهم‌ترین اقدام برای حفاظت از محیط زیست چیست؟",
-description:"کدام اقدام باید برای حفاظت از محیط زیست در اولویت باشد؟",
-info:"۹ روز باقی مانده",
-voters:"۷۱۰",
-options:[
-"کاهش مصرف",
-"بازیافت",
-"انرژی پاک",
-"حفاظت از جنگل‌ها"
-],
-votes:[20,22,38,20]
-}
-
-],
-
-"اجتماعی":[
-
-{
-id:"social_001",
-emoji:"🏛️",
-title:"مهم‌ترین عامل افزایش کیفیت زندگی چیست؟",
-description:"از دیدگاه شما کدام عامل بیشترین تأثیر را بر کیفیت زندگی دارد؟",
-info:"۷ روز باقی مانده",
-voters:"۸۹۰",
-options:[
-"آموزش",
-"اقتصاد",
-"سلامت",
-"امنیت"
-],
-votes:[25,30,25,20]
-}
-
-],
-
-"استانداردها":[
-
-{
-id:"standards_001",
-emoji:"🗣️",
-title:"برای مفهوم Smartphone کدام واژه فارسی مناسب‌تر است؟",
-description:"کدام واژه را برای استفاده عمومی مناسب‌تر می‌دانید؟",
-info:"۱۰ روز باقی مانده",
-voters:"۶۴۰",
-options:[
-"گوشی هوشمند",
-"تلفن هوشمند",
-"همراه هوشمند",
-"پیشنهاد دیگر"
-],
-votes:[55,25,15,5]
-}
-
-]
-
-};
-
-
-/*
-==================================================
-CURRENT STATE
-==================================================
-*/
-
-let currentCategory="";
-let currentPoll=null;
-let pollOpenedFrom="category";
-
-
-/*
-==================================================
-GET POLL KEY
-==================================================
-*/
-
-function getPollKey(){
-
-if(!currentPoll){
-
-return "";
-
-}
-
-return "didgah_poll_" +
-currentPoll.id;
-
-}
-
-
-/*
-==================================================
-LOAD SAVED RESULTS
-==================================================
-*/
-
-function loadSavedResults(){
-
-if(!currentPoll){
-
-return;
-
-}
-
-const savedResults =
-localStorage.getItem(
-getPollKey() + "_results"
-);
-
-if(savedResults){
-
-try{
-
-currentPoll.votes =
-JSON.parse(savedResults);
-
-}catch(error){
-
-console.log(
-"خطا در خواندن نتایج ذخیره‌شده"
-);
-
-}
-
-}
-
-}
-
-
-/*
-==================================================
-CHECK SAVED VOTE
-==================================================
-*/
-
-function checkSavedVote(){
-
-const pollDetail =
-document.getElementById("pollDetail");
-
-const voteButton =
-pollDetail.querySelector(".vote-button");
-
-const options =
-pollDetail.querySelectorAll(".option");
-
-if(!currentPoll || !voteButton){
-
-return;
-
-}
-
-const pollKey =
-"didgah_vote_" +
-currentPoll.id;
-
-const savedVote =
-localStorage.getItem(pollKey);
-
-if(savedVote !== null){
-
-options.forEach((option,index)=>{
-
-option.style.pointerEvents="none";
-
-option.classList.add("locked");
-
-if(index === Number(savedVote)){
-
-option.classList.add("selected");
-
-}
-
-});
-
-
-voteButton.innerText =
-"رأی ثبت شد ✓";
-
-voteButton.disabled=true;
-
-
-const results =
-pollDetail.querySelector(".results");
-
-if(results){
-
-results.style.display="block";
-
-}
-
-}
-
-}
-
-
-/*
-==================================================
-CREATE POLL HTML
-==================================================
-*/
-
-function renderPoll(){
-
-const detail =
-document.getElementById("pollDetail");
-
-let optionsHTML="";
-
-
-currentPoll.options.forEach(option=>{
-
-optionsHTML+=`
-
-<div
-class="option"
-onclick="selectOption(this)">
-
-${option}
-
-</div>
-
-`;
-
-});
-
-
-let resultsHTML="";
-
-
-currentPoll.options.forEach((option,i)=>{
-
-resultsHTML+=`
-
-<div class="result-row">
-
-<div class="result-label">
-
-<span>
-${option}
-</span>
-
-<span>
-${currentPoll.votes[i]}%
-</span>
-
-</div>
-
-<div class="result-bar">
-
-<div
-class="result-fill"
-style="width:${currentPoll.votes[i]}%">
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-
-detail.innerHTML=`
-
-<div class="detail-image">
-${currentPoll.emoji}
-</div>
-
-<div class="detail-category">
-دسته‌بندی: ${currentCategory}
-</div>
-
-<div class="detail-title">
-${currentPoll.title}
-</div>
-
-<div class="detail-description">
-${currentPoll.description}
-</div>
-
-<div class="detail-info">
-
-<span>
-⏳ ${currentPoll.info}
-</span>
-
-<span>
-👥 ${currentPoll.voters} نفر
-</span>
-
-</div>
-
-<div class="options">
-${optionsHTML}
-</div>
-
-<button
-class="vote-button"
-onclick="showResult(this)">
-
-ثبت رأی
-
-</button>
-
-<div class="results">
-
-<div class="results-title">
-📊 نتایج نظرسنجی
-</div>
-
-${resultsHTML}
-
-<div class="result-message">
-نتایج فعلی نظرسنجی
-</div>
-
-</div>
-
-`;
-
-}
-
-
-/*
-==================================================
-OPEN POLL FROM HOME
-==================================================
-*/
-
-function openPollFromHome(pollId){
-
-pollOpenedFrom="home";
-
-const result =
-findPollById(pollId);
-
-if(!result){
-
-console.log(
-"نظرسنجی پیدا نشد: " + pollId
-);
-
-return;
-
-}
-
-currentCategory =
-result.category;
-
-currentPoll =
-result.poll;
-
-loadSavedResults();
-
-document
-.getElementById("homePage")
-.classList.remove("active");
-
-document
-.getElementById("pollPage")
-.classList.add("active");
-
-renderPoll();
-
-checkSavedVote();
-
-}
-
-
-/*
-==================================================
-FIND POLL BY ID
-==================================================
-*/
-
-function findPollById(pollId){
-
-for(const category in polls){
-
-const categoryPolls =
-polls[category];
-
-const index =
-categoryPolls.findIndex(
-poll => poll.id === pollId
-);
-
-if(index !== -1){
-
-return{
-
-category:category,
-poll:categoryPolls[index]
-
-};
-
-}
-
-}
-
-return null;
-
-}
-
-
-/*
-==================================================
-OPEN CATEGORY
-==================================================
-*/
-
-function openCategory(category){
-
-pollOpenedFrom="category";
-
-currentCategory=category;
-
-document
-.getElementById("homePage")
-.classList.remove("active");
-
-document
-.getElementById("categoryPage")
-.classList.add("active");
-
-document
-.getElementById("categoryTitle")
-.innerText=
-"نظرسنجی‌های "+category;
-
-const list =
-document.getElementById("pollList");
-
-list.innerHTML="";
-
-const categoryPolls =
-polls[category] || [];
-
-
-categoryPolls.forEach((poll,index)=>{
-
-list.innerHTML+=`
-
-<div
-class="poll-card"
-onclick="openPoll(${index})">
-
-<div class="poll-image">
-${poll.emoji}
-</div>
-
-<div class="poll-content">
-
-<div class="poll-category">
-نظرسنجی ${index+1}
-</div>
-
-<div class="poll-title">
-${poll.title}
-</div>
-
-<div class="poll-description">
-${poll.description}
-</div>
-
-<div class="poll-info">
-
-<span>
-⏳ ${poll.info}
-</span>
-
-<span>
-👥 ${poll.voters} شرکت‌کننده
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-/*
-==================================================
-OPEN POLL
-==================================================
-*/
-
-function openPoll(index){
-
-pollOpenedFrom="category";
-
-currentPoll =
-polls[currentCategory][index];
-
-loadSavedResults();
-
-document
-.getElementById("categoryPage")
-.classList.remove("active");
-
-document
-.getElementById("pollPage")
-.classList.add("active");
-
-renderPoll();
-
-checkSavedVote();
-
-}
-
-
-/*
-==================================================
-SELECT OPTION
-==================================================
-*/
-
-function selectOption(element){
-
-const pollDetail =
-element.closest("#pollDetail");
-
-const voteButton =
-pollDetail.querySelector(".vote-button");
-
-
-if(voteButton.disabled){
-
-return;
-
-}
-
-
-const options =
-pollDetail.querySelectorAll(".option");
-
-
-options.forEach(option=>{
-
-option.classList.remove("selected");
-
-});
-
-
-element.classList.add("selected");
-
-}
-
-
-/*
-==================================================
-VOTE
-==================================================
-*/
-
-function showResult(button){
-
-const pollDetail =
-button.closest("#pollDetail");
-
-const selected =
-pollDetail.querySelector(".option.selected");
-
-
-if(!selected){
-
-alert(
-"لطفاً ابتدا یکی از گزینه‌ها را انتخاب کنید."
-);
-
-return;
-
-}
-
-
-const options =
-pollDetail.querySelectorAll(".option");
-
-
-const selectedIndex =
-Array.from(options).indexOf(selected);
-
-
-/*
-SAVE USER VOTE
-*/
-
-const voteKey =
-"didgah_vote_" +
-currentPoll.id;
-
-localStorage.setItem(
-voteKey,
-selectedIndex
-);
-
-
-/*
-CONVERT CURRENT PERCENTAGES
-TO APPROXIMATE COUNTS
-*/
-
-const currentVotes =
-currentPoll.votes.map(
-percent =>
-Math.max(
-1,
-Math.round(percent)
-)
-);
-
-
-/*
-ADD NEW VOTE
-*/
-
-currentVotes[selectedIndex]++;
-
-
-/*
-CALCULATE TOTAL
-*/
-
-const totalVotes =
-currentVotes.reduce(
-(sum,vote)=>sum+vote,
-0
-);
-
-
-/*
-CALCULATE NEW PERCENTAGES
-*/
-
-let newPercentages =
-currentVotes.map(
-vote =>
-Math.round(
-(vote / totalVotes) * 100
-)
-);
-
-
-/*
-CORRECT TOTAL TO 100%
-*/
-
-let difference =
-100 -
-newPercentages.reduce(
-(sum,percent)=>sum+percent,
-0
-);
-
-newPercentages[selectedIndex] += difference;
-
-
-/*
-SAVE NEW RESULTS
-*/
-
-currentPoll.votes =
-newPercentages;
-
-localStorage.setItem(
-getPollKey() + "_results",
-JSON.stringify(newPercentages)
-);
-
-
-/*
-UPDATE CHART
-*/
-
-const resultRows =
-pollDetail.querySelectorAll(".result-row");
-
-
-resultRows.forEach((row,index)=>{
-
-const percentage =
-newPercentages[index];
-
-
-const percentageText =
-row.querySelector(
-".result-label span:last-child"
-);
-
-
-const resultFill =
-row.querySelector(
-".result-fill"
-);
-
-
-percentageText.innerText =
-percentage + "%";
-
-
-resultFill.style.width =
-percentage + "%";
-
-});
-
-
-/*
-LOCK OPTIONS
-*/
-
-options.forEach(option=>{
-
-option.style.pointerEvents="none";
-
-option.classList.add("locked");
-
-});
-
-
-/*
-SHOW RESULTS
-*/
-
-const results =
-pollDetail.querySelector(".results");
-
-results.style.display="block";
-
-
-/*
-LOCAL VOTER COUNT
-*/
-
-const currentVoters =
-parseInt(
-currentPoll.voters
-.replace(/[^\d]/g,"")
-) || 0;
-
-
-currentPoll.voters =
-(
-currentVoters + 1
-).toLocaleString("fa-IR");
-
-
-/*
-DISABLE BUTTON
-*/
-
-button.innerText =
-"رأی ثبت شد ✓";
-
-button.disabled=true;
-
-}
-
-
-/*
-==================================================
-ACCOUNT SYSTEM - TEMPORARY PROTOTYPE
-==================================================
-*/
-
-
-function openAccountPage(){
-
-document
-.getElementById("homePage")
-.classList.remove("active");
-
-document
-.getElementById("categoryPage")
-.classList.remove("active");
-
-document
-.getElementById("pollPage")
-.classList.remove("active");
-
-document
-.getElementById("accountPage")
-.classList.add("active");
-
-checkLoginStatus();
-
-}
-
-
-function goHomeFromAccount(){
-
-document
-.getElementById("accountPage")
-.classList.remove("active");
-
-document
-.getElementById("homePage")
-.classList.add("active");
-
-}
-
-
-/*
-SHOW LOGIN
-*/
-
-function showLogin(){
-
-document
-.getElementById("loginBox")
-.style.display="block";
-
-document
-.getElementById("registerBox")
-.style.display="none";
-
-document
-.getElementById("loggedInBox")
-.style.display="none";
-
-}
-
-
-/*
-SHOW REGISTER
-*/
-
-function showRegister(){
-
-document
-.getElementById("loginBox")
-.style.display="none";
-
-document
-.getElementById("registerBox")
-.style.display="block";
-
-document
-.getElementById("loggedInBox")
-.style.display="none";
-
-}
-
-
-/*
-REGISTER USER
-*/
-
-function registerUser(){
-
-const username =
-document
-.getElementById("registerUsername")
-.value
-.trim();
-
-const password =
-document
-.getElementById("registerPassword")
-.value;
-
-const repeatPassword =
-document
-.getElementById("registerPasswordRepeat")
-.value;
-
-const message =
-document
-.getElementById("registerMessage");
-
-
-if(!username || !password || !repeatPassword){
-
-message.innerText =
-"لطفاً همه قسمت‌ها را کامل کنید.";
-
-return;
-
-}
-
-
-if(password !== repeatPassword){
-
-message.innerText =
-"رمز عبور و تکرار آن یکسان نیست.";
-
-return;
-
-}
-
-
-if(password.length < 6){
-
-message.innerText =
-"رمز عبور باید حداقل ۶ کاراکتر باشد.";
-
-return;
-
-}
-
-
-/*
-توجه:
-این ذخیره‌سازی فقط برای نمونه اولیه است.
-در نسخه واقعی رمز عبور نباید در مرورگر ذخیره شود.
-*/
-
-localStorage.setItem(
-"didgah_demo_username",
-username
-);
-
-localStorage.setItem(
-"didgah_demo_password",
-password
-);
-
-message.innerText =
-"حساب آزمایشی با موفقیت ساخته شد.";
-
-setTimeout(()=>{
-
-showLogin();
-
-document
-.getElementById("loginUsername")
-.value=username;
-
-},700);
-
-}
-
-
-/*
-LOGIN USER
-*/
-
-function loginUser(){
-
-const username =
-document
-.getElementById("loginUsername")
-.value
-.trim();
-
-const password =
-document
-.getElementById("loginPassword")
-.value;
-
-const savedUsername =
-localStorage.getItem(
-"didgah_demo_username"
-);
-
-const savedPassword =
-localStorage.getItem(
-"didgah_demo_password"
-);
-
-const message =
-document
-.getElementById("loginMessage");
-
-
-if(!username || !password){
-
-message.innerText =
-"لطفاً نام کاربری و رمز عبور را وارد کنید.";
-
-return;
-
-}
-
-
-if(
-username === savedUsername &&
-password === savedPassword
-){
-
-localStorage.setItem(
-"didgah_logged_in",
-"true"
-);
-
-localStorage.setItem(
-"didgah_current_user",
-username
-);
-
-message.innerText =
-"ورود موفق بود.";
-
-setTimeout(()=>{
-
-checkLoginStatus();
-
-},400);
-
-}else{
-
-message.innerText =
-"نام کاربری یا رمز عبور صحیح نیست.";
-
-}
-
-}
-
-
-/*
-CHECK LOGIN STATUS
-*/
-
-function checkLoginStatus(){
-
-const loggedIn =
-localStorage.getItem(
-"didgah_logged_in"
-);
-
-const username =
-localStorage.getItem(
-"didgah_current_user"
-);
-
-
-if(
-loggedIn === "true" &&
-username
-){
-
-document
-.getElementById("loginBox")
-.style.display="none";
-
-document
-.getElementById("registerBox")
-.style.display="none";
-
-document
-.getElementById("loggedInBox")
-.style.display="block";
-
-document
-.getElementById("accountUserName")
-.innerText =
-username;
-
-}else{
-
-showLogin();
-
-}
-
-}
-
-
-/*
-LOGOUT
-*/
-
-function logoutUser(){
-
-localStorage.removeItem(
-"didgah_logged_in"
-);
-
-localStorage.removeItem(
-"didgah_current_user"
-);
-
-showLogin();
-
-document
-.getElementById("loginUsername")
-.value="";
-
-document
-.getElementById("loginPassword")
-.value="";
-
-}
-
-
-/*
-FORGOT PASSWORD
-*/
-
-function forgotPassword(){
-
-alert(
-"در نسخه فعلی، بازیابی رمز عبور هنوز آزمایشی است.\n\nدر نسخه واقعی، از طریق ایمیل یا شماره تلفن ثبت‌شده، فرآیند بازیابی رمز عبور انجام خواهد شد."
-);
-
-}
-
-
-/*
-==================================================
-BACK TO CATEGORY OR HOME
-==================================================
-*/
-
-function goCategory(){
-
-document
-.getElementById("pollPage")
-.classList.remove("active");
-
-
-if(pollOpenedFrom==="home"){
-
-document
-.getElementById("homePage")
-.classList.add("active");
-
-}else{
-
-document
-.getElementById("categoryPage")
-.classList.add("active");
-
-}
-
-}
-
-
-/*
-==================================================
-BACK HOME
-==================================================
-*/
-
-function goHome(){
-
-document
-.getElementById("categoryPage")
-.classList.remove("active");
-
-document
-.getElementById("homePage")
-.classList.add("active");
-
-}
-
-</script>
-
-</body>
-
-</html>
