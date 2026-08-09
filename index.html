@@ -68,7 +68,9 @@ min-height:100vh;
 .option,
 .results-title,
 .result-message,
-.footer{
+.footer,
+.account-title,
+.account-message{
 direction:rtl;
 }
 
@@ -130,7 +132,7 @@ overscroll-behavior-y:contain;
 text-align:center;
 font-size:20px;
 font-weight:bold;
-margin-bottom:22px;
+margin-bottom:18px;
 }
 
 .active-section{
@@ -239,6 +241,35 @@ color:#777;
 margin-top:6px;
 }
 
+
+/* ACCOUNT BUTTON */
+
+.account-button{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+margin:0 auto 22px;
+border:none;
+background:#f1f4ff;
+color:#4f6df5;
+padding:11px 20px;
+border-radius:12px;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
+direction:rtl;
+transition:.2s;
+}
+
+.account-button:hover{
+background:#e5eaff;
+transform:translateY(-1px);
+}
+
+
+/* BACK BUTTON */
+
 .back-button{
 display:flex;
 align-items:center;
@@ -268,6 +299,9 @@ transform:translateX(-2px);
 font-size:17px;
 line-height:1;
 }
+
+
+/* POLL CARD */
 
 .poll-card{
 background:white;
@@ -330,6 +364,9 @@ color:#777;
 direction:ltr;
 }
 
+
+/* POLL DETAIL */
+
 .detail-image{
 height:210px;
 display:flex;
@@ -377,6 +414,9 @@ margin-bottom:20px;
 direction:ltr;
 }
 
+
+/* OPTIONS */
+
 .options{
 direction:rtl;
 }
@@ -412,6 +452,9 @@ background:inherit;
 border-color:#ddd;
 }
 
+
+/* VOTE BUTTON */
+
 .vote-button{
 width:100%;
 border:none;
@@ -430,6 +473,9 @@ transition:.2s;
 opacity:.6;
 cursor:not-allowed;
 }
+
+
+/* RESULTS */
 
 .results{
 display:none;
@@ -492,12 +538,147 @@ color:#777;
 margin-top:14px;
 }
 
+
+/* ACCOUNT PAGE */
+
+.account-box{
+background:white;
+border:1px solid #e1e5ea;
+border-radius:18px;
+padding:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.06);
+direction:rtl;
+}
+
+.account-title{
+font-size:21px;
+font-weight:bold;
+text-align:center;
+margin-bottom:20px;
+}
+
+.account-input{
+width:100%;
+border:1px solid #ddd;
+border-radius:12px;
+padding:13px;
+font-size:15px;
+margin-top:10px;
+outline:none;
+direction:rtl;
+text-align:right;
+background:white;
+}
+
+.account-input:focus{
+border-color:#4f6df5;
+}
+
+.account-submit{
+width:100%;
+border:none;
+background:#4f6df5;
+color:white;
+padding:13px;
+border-radius:12px;
+font-size:15px;
+font-weight:bold;
+margin-top:16px;
+cursor:pointer;
+transition:.2s;
+}
+
+.account-submit:hover{
+background:#405edb;
+}
+
+.forgot-password{
+display:block;
+text-align:left;
+margin-top:12px;
+font-size:13px;
+color:#4f6df5;
+cursor:pointer;
+}
+
+.account-switch{
+text-align:center;
+margin-top:20px;
+font-size:13px;
+color:#777;
+}
+
+.account-switch span{
+color:#4f6df5;
+font-weight:bold;
+cursor:pointer;
+}
+
+.account-message{
+text-align:center;
+font-size:13px;
+margin-top:14px;
+color:#777;
+min-height:20px;
+}
+
+.account-back{
+margin-bottom:18px;
+}
+
+
+/* LOGGED IN */
+
+.account-user-box{
+text-align:center;
+direction:rtl;
+}
+
+.account-user-icon{
+font-size:55px;
+margin-bottom:12px;
+}
+
+.account-user-name{
+font-size:19px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.account-user-status{
+font-size:13px;
+color:#777;
+margin-bottom:20px;
+}
+
+.logout-button{
+width:100%;
+border:none;
+background:#f1f1f1;
+color:#555;
+padding:13px;
+border-radius:12px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.logout-button:hover{
+background:#e8e8e8;
+}
+
+
+/* FOOTER */
+
 .footer{
 text-align:center;
 font-size:11px;
 color:#aaa;
 padding:20px;
 }
+
+
+/* RESPONSIVE */
 
 @media (max-height:750px){
 
@@ -616,7 +797,28 @@ padding:10px;
 margin-top:10px;
 }
 
+.account-box{
+padding:15px;
 }
+
+.account-title{
+font-size:18px;
+margin-bottom:14px;
+}
+
+.account-input{
+padding:10px;
+}
+
+.account-submit{
+padding:10px;
+margin-top:10px;
+}
+
+}
+
+
+/* SAFE AREA */
 
 @supports (padding: max(0px)){
 
@@ -629,106 +831,7 @@ padding-bottom:max(20px, env(safe-area-inset-bottom));
 }
 
 }
-/* USER ACCOUNT */
 
-.account-button{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:7px;
-margin:0 auto 18px;
-border:none;
-background:#f1f4ff;
-color:#4f6df5;
-padding:10px 18px;
-border-radius:12px;
-font-size:14px;
-font-weight:bold;
-cursor:pointer;
-direction:rtl;
-}
-
-.account-button:hover{
-background:#e5eaff;
-}
-
-.account-box{
-background:white;
-border:1px solid #e1e5ea;
-border-radius:18px;
-padding:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.06);
-direction:rtl;
-}
-
-.account-title{
-font-size:20px;
-font-weight:bold;
-text-align:center;
-margin-bottom:20px;
-}
-
-.account-input{
-width:100%;
-border:1px solid #ddd;
-border-radius:12px;
-padding:13px;
-font-size:15px;
-margin-top:10px;
-outline:none;
-direction:rtl;
-text-align:right;
-}
-
-.account-input:focus{
-border-color:#4f6df5;
-}
-
-.account-submit{
-width:100%;
-border:none;
-background:#4f6df5;
-color:white;
-padding:13px;
-border-radius:12px;
-font-size:15px;
-font-weight:bold;
-margin-top:16px;
-cursor:pointer;
-}
-
-.forgot-password{
-display:block;
-text-align:left;
-margin-top:12px;
-font-size:13px;
-color:#4f6df5;
-cursor:pointer;
-}
-
-.account-switch{
-text-align:center;
-margin-top:20px;
-font-size:13px;
-color:#777;
-}
-
-.account-switch span{
-color:#4f6df5;
-font-weight:bold;
-cursor:pointer;
-}
-
-.account-message{
-text-align:center;
-font-size:13px;
-margin-top:14px;
-color:#777;
-}
-
-.account-back{
-margin-bottom:18px;
-}
 </style>
 
 </head>
@@ -761,6 +864,19 @@ margin-bottom:18px;
 <div class="title">
 موضوع مورد نظر خود را انتخاب کنید
 </div>
+
+
+<!-- ACCOUNT BUTTON -->
+
+<button
+class="account-button"
+onclick="openAccountPage()">
+
+<span>👤</span>
+
+<span>حساب کاربری</span>
+
+</button>
 
 
 <div class="active-section">
@@ -1074,6 +1190,205 @@ onclick="goCategory()">
 </div>
 
 
+<!-- ACCOUNT PAGE -->
+
+<div id="accountPage" class="page">
+
+<header>
+
+<div class="logo">
+دیدگاه
+</div>
+
+<div class="subtitle">
+حساب کاربری
+</div>
+
+</header>
+
+
+<main>
+
+<button
+class="back-button account-back"
+onclick="goHomeFromAccount()">
+
+<span>
+بازگشت
+</span>
+
+<span class="back-arrow">
+←
+</span>
+
+</button>
+
+
+<div class="account-box">
+
+
+<!-- LOGIN -->
+
+<div id="loginBox">
+
+<div class="account-title">
+ورود به حساب کاربری
+</div>
+
+
+<input
+id="loginUsername"
+class="account-input"
+type="text"
+placeholder="نام کاربری">
+
+
+<input
+id="loginPassword"
+class="account-input"
+type="password"
+placeholder="رمز عبور">
+
+
+<button
+class="account-submit"
+onclick="loginUser()">
+
+ورود
+
+</button>
+
+
+<span
+class="forgot-password"
+onclick="forgotPassword()">
+
+فراموشی رمز عبور
+
+</span>
+
+
+<div class="account-switch">
+
+حساب کاربری ندارید؟
+
+<span onclick="showRegister()">
+ثبت‌نام
+</span>
+
+</div>
+
+
+<div
+id="loginMessage"
+class="account-message">
+</div>
+
+</div>
+
+
+<!-- REGISTER -->
+
+<div
+id="registerBox"
+style="display:none;">
+
+<div class="account-title">
+ایجاد حساب کاربری
+</div>
+
+
+<input
+id="registerUsername"
+class="account-input"
+type="text"
+placeholder="نام کاربری">
+
+
+<input
+id="registerPassword"
+class="account-input"
+type="password"
+placeholder="رمز عبور">
+
+
+<input
+id="registerPasswordRepeat"
+class="account-input"
+type="password"
+placeholder="تکرار رمز عبور">
+
+
+<button
+class="account-submit"
+onclick="registerUser()">
+
+ثبت‌نام
+
+</button>
+
+
+<div class="account-switch">
+
+قبلاً حساب ساخته‌اید؟
+
+<span onclick="showLogin()">
+ورود
+</span>
+
+</div>
+
+
+<div
+id="registerMessage"
+class="account-message">
+</div>
+
+</div>
+
+
+<!-- LOGGED IN -->
+
+<div
+id="loggedInBox"
+style="display:none;">
+
+<div class="account-user-box">
+
+<div class="account-user-icon">
+👤
+</div>
+
+<div
+id="accountUserName"
+class="account-user-name">
+</div>
+
+<div class="account-user-status">
+شما وارد حساب کاربری خود هستید.
+</div>
+
+
+<button
+class="logout-button"
+onclick="logoutUser()">
+
+خروج از حساب
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</main>
+
+</div>
+
+
 </div>
 
 
@@ -1083,18 +1398,6 @@ onclick="goCategory()">
 /*
 ==================================================
 POLL DATABASE
-==================================================
-
-هر نظرسنجی یک ID ثابت و مستقل دارد.
-
-این ID در آینده برای:
-- سرور
-- دیتابیس
-- ثبت رأی
-- جلوگیری از رأی تکراری
-- لینک مستقیم نظرسنجی
-
-استفاده خواهد شد.
 ==================================================
 */
 
@@ -1152,7 +1455,6 @@ votes:[28,37,25,10]
 
 ],
 
-
 "ورزشی":[
 
 {
@@ -1172,7 +1474,6 @@ votes:[50,20,15,15]
 }
 
 ],
-
 
 "علمی":[
 
@@ -1194,7 +1495,6 @@ votes:[38,27,15,20]
 
 ],
 
-
 "فرهنگی":[
 
 {
@@ -1214,7 +1514,6 @@ votes:[15,30,35,20]
 }
 
 ],
-
 
 "اقتصادی":[
 
@@ -1236,7 +1535,6 @@ votes:[32,25,28,15]
 
 ],
 
-
 "طبیعت":[
 
 {
@@ -1257,7 +1555,6 @@ votes:[20,22,38,20]
 
 ],
 
-
 "اجتماعی":[
 
 {
@@ -1277,7 +1574,6 @@ votes:[25,30,25,20]
 }
 
 ],
-
 
 "استانداردها":[
 
@@ -1316,9 +1612,6 @@ let pollOpenedFrom="category";
 /*
 ==================================================
 GET POLL KEY
-==================================================
-
-از اینجا به بعد ID نظرسنجی مبنای ذخیره‌سازی است.
 ==================================================
 */
 
@@ -1840,9 +2133,7 @@ Array.from(options).indexOf(selected);
 
 
 /*
-------------------------------------------
 SAVE USER VOTE
-------------------------------------------
 */
 
 const voteKey =
@@ -1856,10 +2147,8 @@ selectedIndex
 
 
 /*
-------------------------------------------
 CONVERT CURRENT PERCENTAGES
 TO APPROXIMATE COUNTS
-------------------------------------------
 */
 
 const currentVotes =
@@ -1873,18 +2162,14 @@ Math.round(percent)
 
 
 /*
-------------------------------------------
 ADD NEW VOTE
-------------------------------------------
 */
 
 currentVotes[selectedIndex]++;
 
 
 /*
-------------------------------------------
 CALCULATE TOTAL
-------------------------------------------
 */
 
 const totalVotes =
@@ -1895,9 +2180,7 @@ currentVotes.reduce(
 
 
 /*
-------------------------------------------
 CALCULATE NEW PERCENTAGES
-------------------------------------------
 */
 
 let newPercentages =
@@ -1910,9 +2193,7 @@ Math.round(
 
 
 /*
-------------------------------------------
 CORRECT TOTAL TO 100%
-------------------------------------------
 */
 
 let difference =
@@ -1926,9 +2207,7 @@ newPercentages[selectedIndex] += difference;
 
 
 /*
-------------------------------------------
 SAVE NEW RESULTS
-------------------------------------------
 */
 
 currentPoll.votes =
@@ -1941,9 +2220,7 @@ JSON.stringify(newPercentages)
 
 
 /*
-------------------------------------------
 UPDATE CHART
-------------------------------------------
 */
 
 const resultRows =
@@ -1979,9 +2256,7 @@ percentage + "%";
 
 
 /*
-------------------------------------------
 LOCK OPTIONS
-------------------------------------------
 */
 
 options.forEach(option=>{
@@ -1994,9 +2269,7 @@ option.classList.add("locked");
 
 
 /*
-------------------------------------------
 SHOW RESULTS
-------------------------------------------
 */
 
 const results =
@@ -2006,14 +2279,7 @@ results.style.display="block";
 
 
 /*
-------------------------------------------
-INCREASE LOCAL VOTER COUNT
-------------------------------------------
-
-این قسمت فقط برای نمونه فعلی است.
-در نسخه واقعی تعداد رأی‌دهندگان
-از سرور دریافت خواهد شد.
-------------------------------------------
+LOCAL VOTER COUNT
 */
 
 const currentVoters =
@@ -2030,15 +2296,351 @@ currentVoters + 1
 
 
 /*
-------------------------------------------
-DISABLE VOTE BUTTON
-------------------------------------------
+DISABLE BUTTON
 */
 
 button.innerText =
 "رأی ثبت شد ✓";
 
 button.disabled=true;
+
+}
+
+
+/*
+==================================================
+ACCOUNT SYSTEM - TEMPORARY PROTOTYPE
+==================================================
+*/
+
+
+function openAccountPage(){
+
+document
+.getElementById("homePage")
+.classList.remove("active");
+
+document
+.getElementById("categoryPage")
+.classList.remove("active");
+
+document
+.getElementById("pollPage")
+.classList.remove("active");
+
+document
+.getElementById("accountPage")
+.classList.add("active");
+
+checkLoginStatus();
+
+}
+
+
+function goHomeFromAccount(){
+
+document
+.getElementById("accountPage")
+.classList.remove("active");
+
+document
+.getElementById("homePage")
+.classList.add("active");
+
+}
+
+
+/*
+SHOW LOGIN
+*/
+
+function showLogin(){
+
+document
+.getElementById("loginBox")
+.style.display="block";
+
+document
+.getElementById("registerBox")
+.style.display="none";
+
+document
+.getElementById("loggedInBox")
+.style.display="none";
+
+}
+
+
+/*
+SHOW REGISTER
+*/
+
+function showRegister(){
+
+document
+.getElementById("loginBox")
+.style.display="none";
+
+document
+.getElementById("registerBox")
+.style.display="block";
+
+document
+.getElementById("loggedInBox")
+.style.display="none";
+
+}
+
+
+/*
+REGISTER USER
+*/
+
+function registerUser(){
+
+const username =
+document
+.getElementById("registerUsername")
+.value
+.trim();
+
+const password =
+document
+.getElementById("registerPassword")
+.value;
+
+const repeatPassword =
+document
+.getElementById("registerPasswordRepeat")
+.value;
+
+const message =
+document
+.getElementById("registerMessage");
+
+
+if(!username || !password || !repeatPassword){
+
+message.innerText =
+"لطفاً همه قسمت‌ها را کامل کنید.";
+
+return;
+
+}
+
+
+if(password !== repeatPassword){
+
+message.innerText =
+"رمز عبور و تکرار آن یکسان نیست.";
+
+return;
+
+}
+
+
+if(password.length < 6){
+
+message.innerText =
+"رمز عبور باید حداقل ۶ کاراکتر باشد.";
+
+return;
+
+}
+
+
+/*
+توجه:
+این ذخیره‌سازی فقط برای نمونه اولیه است.
+در نسخه واقعی رمز عبور نباید در مرورگر ذخیره شود.
+*/
+
+localStorage.setItem(
+"didgah_demo_username",
+username
+);
+
+localStorage.setItem(
+"didgah_demo_password",
+password
+);
+
+message.innerText =
+"حساب آزمایشی با موفقیت ساخته شد.";
+
+setTimeout(()=>{
+
+showLogin();
+
+document
+.getElementById("loginUsername")
+.value=username;
+
+},700);
+
+}
+
+
+/*
+LOGIN USER
+*/
+
+function loginUser(){
+
+const username =
+document
+.getElementById("loginUsername")
+.value
+.trim();
+
+const password =
+document
+.getElementById("loginPassword")
+.value;
+
+const savedUsername =
+localStorage.getItem(
+"didgah_demo_username"
+);
+
+const savedPassword =
+localStorage.getItem(
+"didgah_demo_password"
+);
+
+const message =
+document
+.getElementById("loginMessage");
+
+
+if(!username || !password){
+
+message.innerText =
+"لطفاً نام کاربری و رمز عبور را وارد کنید.";
+
+return;
+
+}
+
+
+if(
+username === savedUsername &&
+password === savedPassword
+){
+
+localStorage.setItem(
+"didgah_logged_in",
+"true"
+);
+
+localStorage.setItem(
+"didgah_current_user",
+username
+);
+
+message.innerText =
+"ورود موفق بود.";
+
+setTimeout(()=>{
+
+checkLoginStatus();
+
+},400);
+
+}else{
+
+message.innerText =
+"نام کاربری یا رمز عبور صحیح نیست.";
+
+}
+
+}
+
+
+/*
+CHECK LOGIN STATUS
+*/
+
+function checkLoginStatus(){
+
+const loggedIn =
+localStorage.getItem(
+"didgah_logged_in"
+);
+
+const username =
+localStorage.getItem(
+"didgah_current_user"
+);
+
+
+if(
+loggedIn === "true" &&
+username
+){
+
+document
+.getElementById("loginBox")
+.style.display="none";
+
+document
+.getElementById("registerBox")
+.style.display="none";
+
+document
+.getElementById("loggedInBox")
+.style.display="block";
+
+document
+.getElementById("accountUserName")
+.innerText =
+username;
+
+}else{
+
+showLogin();
+
+}
+
+}
+
+
+/*
+LOGOUT
+*/
+
+function logoutUser(){
+
+localStorage.removeItem(
+"didgah_logged_in"
+);
+
+localStorage.removeItem(
+"didgah_current_user"
+);
+
+showLogin();
+
+document
+.getElementById("loginUsername")
+.value="";
+
+document
+.getElementById("loginPassword")
+.value="";
+
+}
+
+
+/*
+FORGOT PASSWORD
+*/
+
+function forgotPassword(){
+
+alert(
+"در نسخه فعلی، بازیابی رمز عبور هنوز آزمایشی است.\n\nدر نسخه واقعی، از طریق ایمیل یا شماره تلفن ثبت‌شده، فرآیند بازیابی رمز عبور انجام خواهد شد."
+);
 
 }
 
@@ -2090,7 +2692,6 @@ document
 .classList.add("active");
 
 }
-
 
 </script>
 
