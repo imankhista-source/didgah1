@@ -748,6 +748,35 @@ showResults(pollId,poll.options);
 
 function submitVote(pollId){
 
+/* بررسی ورود کاربر */
+
+const user =
+localStorage.getItem("didgahUser");
+
+if(!user){
+
+/* ذخیره نظرسنجی موردنظر */
+
+localStorage.setItem(
+"pendingVote",
+pollId
+);
+
+/* انتقال به صفحه حساب کاربری */
+
+showPage("accountPage");
+
+showAccountMessage(
+"برای ثبت رأی ابتدا وارد حساب کاربری شوید."
+);
+
+return;
+
+}
+
+
+/* پیدا کردن گزینه انتخاب شده */
+
 const selected=
 document.querySelector(
 `input[name="${pollId}"]:checked`
@@ -777,17 +806,13 @@ document
 `input[name="${pollId}"]`
 )
 .forEach(input=>{
+
 input.disabled=true;
-});
 
-
-document
-.querySelectorAll(
-`input[name="${pollId}"]`
-)
-.forEach(input=>{
-input.closest(".poll-option")
+input
+.closest(".poll-option")
 .classList.add("disabled");
+
 });
 
 
@@ -807,8 +832,9 @@ button.innerText=
 /* نمایش نتیجه */
 
 const category=
-document.getElementById("categoryTitle")
-.innerText;
+document.getElementById(
+"categoryTitle"
+).innerText;
 
 const pollIndex=
 pollId.split("_")[1];
@@ -938,10 +964,48 @@ return;
 }
 
 
+/* ورود کاربر */
+
 localStorage.setItem(
 "didgahUser",
 email
 );
+
+
+/* بررسی اینکه کاربر از داخل رأی آمده یا نه */
+
+const pendingVote=
+localStorage.getItem(
+"pendingVote"
+);
+
+if(pendingVote){
+
+localStorage.removeItem(
+"pendingVote"
+);
+
+/* بازگشت به صفحه نظرسنجی */
+
+const parts=
+pendingVote.split("_");
+
+const category=parts[0];
+
+showPage("pollPage");
+
+document.getElementById(
+"categoryTitle"
+).innerText=category;
+
+openPolls(category);
+
+return;
+
+}
+
+
+/* ورود عادی */
 
 loadAccount();
 
