@@ -830,19 +830,17 @@ document.getElementById(
 
 if(!result)return;
 
-
-/*
-در نسخه آزمایشی،
-رأی کاربر فقط برای نمایش وضعیت
-ذخیره می‌شود.
-*/
-
 let selected=
 localStorage.getItem(
 "voted_"+pollId
 );
 
 if(selected===null)return;
+
+
+/* تعداد رأی‌های ثبت شده روی این دستگاه */
+
+let voterCount=1;
 
 
 /* نتایج آزمایشی */
@@ -852,7 +850,6 @@ options.map(()=>{
 return Math.floor(100/options.length);
 });
 
-
 let remaining=
 100-percentages.reduce(
 (a,b)=>a+b,0
@@ -861,9 +858,25 @@ let remaining=
 percentages[0]+=remaining;
 
 
-result.innerHTML=
-"<strong>نتایج</strong>";
+/* نمایش تعداد رأی‌دهندگان */
 
+result.innerHTML=`
+
+<div class="voter-count">
+
+👥 تعداد رأی‌دهندگان:
+<strong>${voterCount}</strong>
+
+</div>
+
+<strong style="display:block;margin-top:15px;">
+نتایج
+</strong>
+
+`;
+
+
+/* نمایش درصدها */
 
 options.forEach((option,index)=>{
 
