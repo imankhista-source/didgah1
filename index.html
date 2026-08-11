@@ -180,6 +180,7 @@ background:#f1f3f5;
 display:none;
 font-size:14px;
 }
+
 .voter-count{
 margin-top:10px;
 padding:10px;
@@ -188,6 +189,7 @@ border-radius:10px;
 font-size:14px;
 color:#555;
 }
+
 .result{
 margin-top:15px;
 }
@@ -247,9 +249,7 @@ color:#888;
 
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -259,9 +259,7 @@ color:#888;
 
 </header>
 
-
 <div class="container">
-
 
 <!-- ================= HOME ================= -->
 
@@ -312,7 +310,6 @@ onclick="openPolls('علم')">
 
 </div>
 
-
 <div class="card">
 
 <h2>حساب کاربری</h2>
@@ -334,7 +331,6 @@ onclick="showPage('accountPage')">
 </section>
 
 
-
 <!-- ================= POLLS ================= -->
 
 <section id="pollPage" class="page">
@@ -347,7 +343,6 @@ onclick="showPage('homePage')">
 
 </button>
 
-
 <div class="card">
 
 <h2 id="categoryTitle"></h2>
@@ -357,7 +352,6 @@ onclick="showPage('homePage')">
 </div>
 
 </section>
-
 
 
 <!-- ================= ACCOUNT ================= -->
@@ -372,7 +366,6 @@ onclick="showPage('homePage')">
 
 </button>
 
-
 <div class="card">
 
 <h2>حساب کاربری</h2>
@@ -386,14 +379,12 @@ type="email"
 id="email"
 placeholder="ایمیل خود را وارد کنید">
 
-
 <label>رمز عبور</label>
 
 <input
 type="password"
 id="password"
 placeholder="رمز عبور">
-
 
 <button
 class="primary-btn"
@@ -403,7 +394,6 @@ onclick="login()">
 
 </button>
 
-
 <button
 class="link-btn"
 onclick="showRegister()">
@@ -411,7 +401,6 @@ onclick="showRegister()">
 ایجاد حساب جدید
 
 </button>
-
 
 <br>
 
@@ -455,7 +444,6 @@ onclick="logout()">
 
 </div>
 
-
 <div
 id="accountMessage"
 class="message">
@@ -464,7 +452,6 @@ class="message">
 </div>
 
 </section>
-
 
 
 <!-- ================= REGISTER ================= -->
@@ -479,11 +466,9 @@ onclick="showPage('accountPage')">
 
 </button>
 
-
 <div class="card">
 
 <h2>ایجاد حساب</h2>
-
 
 <label>ایمیل</label>
 
@@ -492,14 +477,12 @@ type="email"
 id="registerEmail"
 placeholder="ایمیل">
 
-
 <label>رمز عبور</label>
 
 <input
 type="password"
 id="registerPassword"
 placeholder="رمز عبور">
-
 
 <label>تکرار رمز عبور</label>
 
@@ -508,7 +491,6 @@ type="password"
 id="registerPassword2"
 placeholder="تکرار رمز عبور">
 
-
 <button
 class="primary-btn"
 onclick="register()">
@@ -516,7 +498,6 @@ onclick="register()">
 ثبت‌نام
 
 </button>
-
 
 <div
 id="registerMessage"
@@ -527,10 +508,7 @@ class="message">
 
 </section>
 
-
-
 </div>
-
 
 <footer>
 
@@ -539,9 +517,7 @@ class="message">
 </footer>
 
 
-
 <script>
-
 
 /* ================= DATA ================= */
 
@@ -634,7 +610,6 @@ options:[
 };
 
 
-
 /* ================= PAGE CONTROL ================= */
 
 function showPage(pageId){
@@ -653,7 +628,6 @@ behavior:"smooth"
 });
 
 }
-
 
 
 /* ================= POLLS ================= */
@@ -683,6 +657,7 @@ let html=`
 <div>
 
 <h3>${poll.question}</h3>
+
 `;
 
 poll.options.forEach((option,i)=>{
@@ -743,26 +718,19 @@ showResults(pollId,poll.options);
 }
 
 
-
 /* ================= SUBMIT VOTE ================= */
 
 function submitVote(pollId){
-
-/* بررسی ورود کاربر */
 
 const user =
 localStorage.getItem("didgahUser");
 
 if(!user){
 
-/* ذخیره نظرسنجی موردنظر */
-
 localStorage.setItem(
 "pendingVote",
 pollId
 );
-
-/* انتقال به صفحه حساب کاربری */
 
 showPage("accountPage");
 
@@ -774,8 +742,6 @@ return;
 
 }
 
-
-/* پیدا کردن گزینه انتخاب شده */
 
 const selected=
 document.querySelector(
@@ -791,15 +757,11 @@ return;
 }
 
 
-/* ثبت رأی */
-
 localStorage.setItem(
 "voted_"+pollId,
 selected.value
 );
 
-
-/* غیرفعال کردن گزینه‌ها */
 
 document
 .querySelectorAll(
@@ -816,8 +778,6 @@ input
 });
 
 
-/* غیرفعال کردن دکمه */
-
 const button=
 document.getElementById(
 "voteBtn_"+pollId
@@ -828,8 +788,6 @@ button.disabled=true;
 button.innerText=
 "رأی ثبت شده است";
 
-
-/* نمایش نتیجه */
 
 const category=
 document.getElementById(
@@ -845,7 +803,6 @@ polls[category][pollIndex].options
 );
 
 }
-
 
 
 /* ================= RESULTS ================= */
@@ -866,13 +823,7 @@ localStorage.getItem(
 
 if(selected===null)return;
 
-
-/* تعداد رأی‌های ثبت شده روی این دستگاه */
-
 let voterCount=1;
-
-
-/* نتایج آزمایشی */
 
 let percentages=
 options.map(()=>{
@@ -886,8 +837,6 @@ let remaining=
 
 percentages[0]+=remaining;
 
-
-/* نمایش تعداد رأی‌دهندگان */
 
 result.innerHTML=`
 
@@ -903,9 +852,6 @@ result.innerHTML=`
 </strong>
 
 `;
-
-
-/* نمایش درصدها */
 
 options.forEach((option,index)=>{
 
@@ -939,7 +885,6 @@ style="width:${percentages[index]}%">
 }
 
 
-
 /* ================= ACCOUNT ================= */
 
 function login(){
@@ -964,15 +909,36 @@ return;
 }
 
 
-/* ورود کاربر */
+/* بررسی حساب ثبت‌شده */
+
+const registeredEmail=
+localStorage.getItem("registeredEmail");
+
+const registeredPassword=
+localStorage.getItem("registeredPassword");
+
+
+if(
+email !== registeredEmail ||
+password !== registeredPassword
+){
+
+showAccountMessage(
+"ایمیل یا رمز عبور اشتباه است."
+);
+
+return;
+
+}
+
+
+/* ورود موفق */
 
 localStorage.setItem(
 "didgahUser",
 email
 );
 
-
-/* بررسی اینکه کاربر از داخل رأی آمده یا نه */
 
 const pendingVote=
 localStorage.getItem(
@@ -985,18 +951,10 @@ localStorage.removeItem(
 "pendingVote"
 );
 
-/* بازگشت به صفحه نظرسنجی */
-
 const parts=
 pendingVote.split("_");
 
 const category=parts[0];
-
-showPage("pollPage");
-
-document.getElementById(
-"categoryTitle"
-).innerText=category;
 
 openPolls(category);
 
@@ -1005,13 +963,12 @@ return;
 }
 
 
-/* ورود عادی */
-
 loadAccount();
 
 }
 
 
+/* ================= LOAD ACCOUNT ================= */
 
 function loadAccount(){
 
@@ -1033,8 +990,6 @@ document.getElementById(
 ).innerText=user;
 
 
-/* شمارش رأی‌ها */
-
 let count=0;
 
 Object.keys(localStorage)
@@ -1055,6 +1010,7 @@ document.getElementById(
 }
 
 
+/* ================= LOGOUT ================= */
 
 function logout(){
 
@@ -1073,7 +1029,6 @@ document.getElementById(
 }
 
 
-
 /* ================= REGISTER ================= */
 
 function showRegister(){
@@ -1081,7 +1036,6 @@ function showRegister(){
 showPage("registerPage");
 
 }
-
 
 
 function register(){
@@ -1124,10 +1078,25 @@ return;
 }
 
 
-/*
-نسخه آزمایشی:
-اطلاعات ورود فقط روی همین دستگاه ذخیره می‌شود.
-*/
+/* جلوگیری از ثبت حساب تکراری */
+
+const existingEmail=
+localStorage.getItem(
+"registeredEmail"
+);
+
+if(existingEmail){
+
+showRegisterMessage(
+"یک حساب قبلاً روی این دستگاه ثبت شده است."
+);
+
+return;
+
+}
+
+
+/* ذخیره حساب */
 
 localStorage.setItem(
 "registeredEmail",
@@ -1152,6 +1121,7 @@ loadAccount();
 }
 
 
+/* ================= FORGOT PASSWORD ================= */
 
 function forgotPassword(){
 
@@ -1160,7 +1130,6 @@ showAccountMessage(
 );
 
 }
-
 
 
 /* ================= MESSAGES ================= */
@@ -1179,7 +1148,6 @@ message.style.display="block";
 }
 
 
-
 function showRegisterMessage(text){
 
 const message=
@@ -1194,14 +1162,11 @@ message.style.display="block";
 }
 
 
-
 /* ================= START ================= */
 
 loadAccount();
 
-
 </script>
-
 
 </body>
 
